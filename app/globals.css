@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #80CF16;
+  --color-secondary: #B6B6B8;
+
+  /* Font Family */
+  --font-manrope: var(--font-manrope);
+  
+  /* Background Image Gradients */
+  --background-image-primary-gradient: linear-gradient(180deg, #80CF16 0%, #80CF16 100%);
+  
+
+    /* breakpoint */
+  --breakpoint-xxs: 390px;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 650px;
+  --breakpoint-md: 768px;
+  --breakpoint-xmd: 992px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xlg: 1200px;
+  --breakpoint-xl: 1560px;
+  --breakpoint-xxl: 1920px;
+  --breakpoint-3xl: 1920px;
+
+  /* shadow */
+
+  --shadow-custom: 0px 4px 16.2px 2px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  @apply font-manrope bg-[#0D0D0D] text-white;
+}
+
+.bg-primary-gradient,
+.bg-linear-gradient {
+  background: linear-gradient(180deg, #80CF16 0%, #80CF16 100%);
+}
+
+button{
+  cursor: pointer;
+}
+.section-padding-x {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.section-padding-y {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+@media screen and (min-width: 650px) {
+  .section-padding-x {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .section-padding-y {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-padding-x {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .section-padding-y {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section-padding-x {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .section-padding-y {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section-padding-x {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .section-padding-y {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 1460px) {
+  .section-padding-x {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+  .section-padding-y {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+/* Custom Scrollbar Styles */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #80CF16 #0D0D0D;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #80CF16;
+  border-radius: 10px;
+  border: 2px solid #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #99EC21;
+}
+
