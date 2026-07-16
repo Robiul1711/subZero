@@ -8,6 +8,7 @@ import bannerLayer from '@/assets/bannerlayer.png';
 import bannerPhone from '@/assets/banner.png';
 import { FcGoogle } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
+import { FlipWords } from '@/components/common/FlipWords';
 const Banner = () => {
   const serviceBadges = [
     {
@@ -51,7 +52,6 @@ const Banner = () => {
 
       {/* Grid Pattern overlay */}
 
-
       <div className="mx-auto w-full section-padding-x">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
           
@@ -71,9 +71,19 @@ const Banner = () => {
             {/* Main Headline */}
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight text-white leading-[1.15]">
               We Fix Gadgets <br />
-              <span className="text-primary bg-clip-text">
-                Like New Again.
-              </span>
+              
+                <FlipWords
+                  words={[
+                    "Like New Again.",
+                    "Fast & Reliable.",
+                    "With Genuine Parts.",
+                    "With Warranty.",
+                    "At Best Prices.",
+                  ]}
+                  duration={3000}
+                  className="text-primary"
+                />
+             
             </h1>
 
             {/* Description */}
