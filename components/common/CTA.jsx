@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CTA = () => {
   return (
-    <section className="w-full py-12 sm:py-16 relative overflow-hidden">
+    <section className="w-full pb-12 sm:pb-16 relative overflow-hidden">
       <div className="w-full section-padding-x">
         <div className="relative w-full bg-primary rounded-[20px] p-8 sm:p-10 md:px-12 md:py-10 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-6 text-center sm:text-left shadow-[0_20px_50px_-5px_rgba(128,207,22,0.6)]">
           {/* Left Text Side */}

@@ -131,3 +131,20 @@ html {
   background: #99EC21;
 }
 
+/* Border Beam Animation Styles */
+@keyframes border-beam-spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+

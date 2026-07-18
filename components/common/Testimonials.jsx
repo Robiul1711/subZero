@@ -70,10 +70,10 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="w-full py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="w-full py-10 sm:py-16 lg:py-20 relative overflow-hidden">
       <div className="w-full section-padding-x">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto">
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
             Testimonials
           </span>
@@ -108,11 +108,11 @@ const Testimonials = () => {
               spaceBetween: 24,
             },
           }}
-          className="w-full pb-24 !overflow-visible"
+        
         >
           {testimonials.map((t) => (
-            <SwiperSlide key={t.id} className="h-auto flex flex-col">
-              <div className="w-full flex-1 relative bg-[#121212]/30 border border-white/5 rounded-[24px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-gradient-to-t hover:from-primary/20 hover:via-primary/5 hover:to-[#121212]/30 hover:shadow-[0_4px_30px_rgba(128,207,22,0.1)] group cursor-default">
+            <SwiperSlide key={t.id} className="h-auto flex flex-col py-10! sm:py-16! px-2">
+              <div className="w-full flex-1  relative bg-[#121212]/30 border border-white/5 rounded-[24px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-gradient-to-t hover:from-primary/20 hover:via-primary/5 hover:to-[#121212]/30 hover:shadow-[0_4px_30px_rgba(128,207,22,0.1)] group cursor-default">
                 <div>
                   {/* 5 Stars */}
                   <div className="flex gap-1 mb-5 text-primary">
@@ -150,11 +150,8 @@ const Testimonials = () => {
         </Swiper>
 
         <style>{`
-          .swiper {
-            overflow: visible !important;
-          }
           .swiper-pagination {
-            bottom: -6px !important;
+            bottom: 12px !important;
           }
           .swiper-pagination-bullet {
             background: rgba(255, 255, 255, 0.2) !important;
