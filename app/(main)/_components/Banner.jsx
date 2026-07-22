@@ -112,7 +112,7 @@ const Banner = () => {
                   <span className="text-xl font-bold text-white">4.9</span>
                   <div className="flex items-center text-amber-400">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar />
+                      <FaStar key={i} />
                     ))}
                   </div>
                 </div>

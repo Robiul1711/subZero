@@ -17,6 +17,7 @@ const Testimonials = () => {
       device: "iPhone User",
       initials: "SM",
       text: '"My cracked screen was fixed in under an hour. The technician was professional and the quality is outstanding. Looks brand new!"',
+      rating: 5,
     },
     {
       id: 2,
@@ -24,6 +25,7 @@ const Testimonials = () => {
       device: "MacBook Owner",
       initials: "JO",
       text: '"Brought in my water-damaged MacBook expecting bad news. They recovered everything and repaired it for a very fair price. Incredible service."',
+      rating: 4,
     },
     {
       id: 3,
@@ -31,6 +33,7 @@ const Testimonials = () => {
       device: "Samsung User",
       initials: "PS",
       text: '"Outstanding customer support. They diagnosed the charging port issue quickly and repaired it within the same day. Transparent pricing too!"',
+      rating: 5,
     },
     {
       id: 4,
@@ -38,6 +41,7 @@ const Testimonials = () => {
       device: "iPad User",
       initials: "TB",
       text: '"Great experience from start to finish. The booking system is super easy and the repair was done ahead of schedule."',
+      rating: 4,
     },
     {
       id: 5,
@@ -45,6 +49,7 @@ const Testimonials = () => {
       device: "PS5 Gamer",
       initials: "MA",
       text: '"Exceptional HDMI port replacement on my console. Done on the same day and works perfectly now. Fast service and honest pricing!"',
+      rating: 5,
     },
     {
       id: 6,
@@ -52,6 +57,7 @@ const Testimonials = () => {
       device: "iPad Pro User",
       initials: "SC",
       text: '"Needed a quick battery replacement for my iPad before a business trip. They sorted it in 2 hours. Battery life is fantastic now!"',
+      rating: 5,
     },
     {
       id: 7,
@@ -59,6 +65,7 @@ const Testimonials = () => {
       device: "Dell XPS Owner",
       initials: "DK",
       text: '"Great experience. Replaced my broken laptop screen and keyboard. Super clean job, very friendly and helpful staff."',
+      rating: 4,
     },
     {
       id: 8,
@@ -66,6 +73,7 @@ const Testimonials = () => {
       device: "Apple Watch User",
       initials: "AD",
       text: '"Very fast screen repair on my Apple Watch. Touch screen is fully functional and responsive, looks completely original. 10/10!"',
+      rating: 5,
     },
   ];
 
@@ -114,10 +122,14 @@ const Testimonials = () => {
             <SwiperSlide key={t.id} className="h-auto flex flex-col py-10! sm:py-16! px-2">
               <div className="w-full flex-1  relative bg-[#121212]/30 border border-white/5 rounded-[24px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-gradient-to-t hover:from-primary/20 hover:via-primary/5 hover:to-[#121212]/30 hover:shadow-[0_4px_30px_rgba(128,207,22,0.1)] group cursor-default">
                 <div>
-                  {/* 5 Stars */}
-                  <div className="flex gap-1 mb-5 text-primary">
+                  {/* Stars based on rating */}
+                  <div className="flex gap-1 mb-5">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} size={14} />
+                      <FaStar
+                        key={i}
+                        size={14}
+                        className={i < (t.rating || 5) ? "text-primary" : "text-white/10"}
+                      />
                     ))}
                   </div>
 

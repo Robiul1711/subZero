@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { LuSearch, LuSmartphone, LuTablet, LuLaptop } from "react-icons/lu";
+import Link from "next/link";
 
 const DeviceMarketplace = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -194,9 +195,11 @@ const DeviceMarketplace = () => {
                 </div>
 
                 {/* Enquiry Button */}
-                <button className="w-full py-2.5 mt-5 rounded-xl border border-white/10 hover:border-primary bg-transparent text-white hover:text-black hover:bg-primary text-xs font-semibold tracking-wide transition-all duration-300 text-center cursor-pointer">
-                  Enquire Now
-                </button>
+                <Link href="/collection/details" className="w-full">
+                  <button className="w-full py-2.5 mt-5 rounded-xl border border-white/10 hover:border-primary bg-transparent text-white hover:text-black hover:bg-primary text-xs font-semibold tracking-wide transition-all duration-300 text-center cursor-pointer">
+                    View Details & Enquire
+                  </button>
+                </Link>
               </div>
             );
           })}
