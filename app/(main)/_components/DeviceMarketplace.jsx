@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { LuSearch, LuSmartphone, LuTablet, LuLaptop } from "react-icons/lu";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const DeviceMarketplace = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -124,11 +125,17 @@ const DeviceMarketplace = () => {
   );
 
   return (
-    <section className="relative w-full pt-8 sm:pt-12 pb-10  overflow-hidden z-10">
+    <section className="relative w-full pt-8 sm:pt-12 pb-10 overflow-hidden z-10">
 
       <div className="w-full section-padding-x max-w-[1600px] mx-auto">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-4 md:mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          className="text-center max-w-3xl mx-auto mb-4 md:mb-10"
+        >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
             Certified Pre-Owned
           </span>
@@ -138,10 +145,16 @@ const DeviceMarketplace = () => {
           <p className="mt-4 text-sm sm:text-base text-secondary max-w-2xl mx-auto leading-relaxed">
             Grade-A certified pre-owned smartphones, laptops, tablets, and more. Every device inspected, graded, and warranted.
           </p>
-        </div>
+        </motion.div>
 
         {/* Search Bar */}
-        <div className="max-w-xl mx-auto mb-10 md:mb-16 relative">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, type: "spring", stiffness: 100, damping: 15 }}
+          className="max-w-xl mx-auto mb-10 md:mb-16 relative"
+        >
           <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-secondary">
             <LuSearch className="text-lg" />
           </div>
@@ -152,16 +165,43 @@ const DeviceMarketplace = () => {
             placeholder="Search by name or brand..."
             className="w-full bg-[#121212]/80 border border-white/10 rounded-full py-2 sm:py-4 pl-10 md:pl-12 pr-6 text-sm text-white placeholder-white/30 focus:outline-none focus:border-primary transition-all duration-300"
           />
-        </div>
+        </motion.div>
 
         {/* Devices Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.08,
+              }
+            }
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+        >
           {filteredDevices.map((device, index) => {
             const DeviceIcon = device.icon;
             return (
-              <div
+              <motion.div
                 key={index}
-                className="bg-[#121212]/40 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:bg-white/[0.01] group"
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 90,
+                      damping: 14
+                    }
+                  }
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="bg-[#121212]/40 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between group"
               >
                 <div>
                   {/* Device Icon Showcase Area */}
@@ -200,10 +240,10 @@ const DeviceMarketplace = () => {
                     View Details & Enquire
                   </button>
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

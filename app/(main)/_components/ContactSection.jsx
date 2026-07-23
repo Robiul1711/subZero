@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { LuUser, LuMail, LuPhone } from "react-icons/lu";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import contactImg from "@/assets/contact.png";
 
 const ContactSection = () => {
@@ -31,14 +32,26 @@ const ContactSection = () => {
     <section className="relative w-full pt-10 pb-16 overflow-hidden z-10">
       <div className="w-full section-padding-x max-w-[1600px] mx-auto">
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-8 tracking-tight text-left">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          className="text-3xl sm:text-4xl font-extrabold text-white mb-8 tracking-tight text-left"
+        >
           Get In Touch With Us
-        </h2>
+        </motion.h2>
 
         {/* Two-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Image Container */}
-          <div className="lg:col-span-6 relative rounded-[32px] overflow-hidden min-h-[350px] lg:min-h-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, x: -30 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 80, damping: 15 }}
+            className="lg:col-span-6 relative rounded-[32px] overflow-hidden min-h-[350px] lg:min-h-auto"
+          >
             <Image
               src={contactImg}
               alt="Technician repairing phone"
@@ -46,10 +59,16 @@ const ContactSection = () => {
               className="object-cover"
               priority
             />
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="lg:col-span-6 bg-[#121212]/80 border border-white/5 rounded-[24px] p-6 sm:p-10 flex flex-col justify-center">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 80, damping: 15 }}
+            className="lg:col-span-6 bg-[#121212]/80 border border-white/5 rounded-[24px] p-6 sm:p-10 flex flex-col justify-center"
+          >
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
               {/* Name field */}
               <div className="flex flex-col gap-2">
@@ -169,14 +188,16 @@ const ContactSection = () => {
               </div>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
-                className="w-full py-3 mt-2 bg-primary hover:bg-[#99EC21] text-black rounded-xl text-sm font-bold transition-all duration-300 hover:scale-[1.01] shadow-[0_4px_20px_rgba(128,207,22,0.25)] cursor-pointer"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full py-3 mt-2 bg-primary hover:bg-[#99EC21] text-black rounded-xl text-sm font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(128,207,22,0.25)] cursor-pointer"
               >
                 Send
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

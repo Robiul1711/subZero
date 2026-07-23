@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { GlowButton } from "@/components/common/GlowButton";
+import { motion } from "framer-motion";
 import phone1 from "@/assets/phone1.png";
 import phone2 from "@/assets/phone2.png";
 
@@ -43,27 +44,60 @@ const Shop = () => {
   ];
 
   return (
-    <section className="w-full ">
+    <section className="relative w-full ">
       {/* Background radial glow */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       <div className="w-full section-padding-x">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+        >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
             Shop
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
             Certified Pre-Owned Devices
           </h2>
-        </div>
+        </motion.div>
 
         {/* Devices Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              }
+            }
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {devices.map((device) => (
-            <div
+            <motion.div
               key={device.id}
-              className="bg-[#121212]/30 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:bg-white/[0.01] group cursor-default"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 90,
+                    damping: 14
+                  }
+                }
+              }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="bg-[#121212]/30 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between group cursor-default"
             >
               <div>
                 {/* Image Container */}
@@ -105,14 +139,20 @@ const Shop = () => {
               <button className="w-full py-2.5 rounded-[12px] border border-white/10 bg-white/[0.02] text-sm font-semibold text-white transition-all duration-300 hover:border-primary hover:bg-primary hover:text-[#0D0D0D]">
                 Enquire Now
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Button */}
-        <div className="flex justify-center mt-12 sm:mt-16">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 80 }}
+          className="flex justify-center mt-12 sm:mt-16"
+        >
           <GlowButton>View All</GlowButton>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
