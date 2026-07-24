@@ -22,27 +22,63 @@ const modelsData = [
     id: 1,
     name: "iPhone 15 Pro Max",
     repairs: [
-      { name: "Screen Replacement", price: "$329", warranty: "12 month warranty" },
-      { name: "Battery Replacement", price: "$99", warranty: "12 month warranty" },
-      { name: "Back Glass Repair", price: "$149", warranty: "12 month warranty" },
+      {
+        name: "Screen Replacement",
+        price: "$329",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Battery Replacement",
+        price: "$99",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Back Glass Repair",
+        price: "$149",
+        warranty: "12 month warranty",
+      },
     ],
   },
   {
     id: 2,
     name: "iPhone 15 Pro",
     repairs: [
-      { name: "Screen Replacement", price: "$299", warranty: "12 month warranty" },
-      { name: "Battery Replacement", price: "$89", warranty: "12 month warranty" },
-      { name: "Back Glass Repair", price: "$129", warranty: "12 month warranty" },
+      {
+        name: "Screen Replacement",
+        price: "$299",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Battery Replacement",
+        price: "$89",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Back Glass Repair",
+        price: "$129",
+        warranty: "12 month warranty",
+      },
     ],
   },
   {
     id: 3,
     name: "iPhone 14 Pro Max",
     repairs: [
-      { name: "Screen Replacement", price: "$279", warranty: "12 month warranty" },
-      { name: "Battery Replacement", price: "$79", warranty: "12 month warranty" },
-      { name: "Back Glass Repair", price: "$119", warranty: "12 month warranty" },
+      {
+        name: "Screen Replacement",
+        price: "$279",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Battery Replacement",
+        price: "$79",
+        warranty: "12 month warranty",
+      },
+      {
+        name: "Back Glass Repair",
+        price: "$119",
+        warranty: "12 month warranty",
+      },
     ],
   },
 ];
@@ -65,23 +101,23 @@ const PhoneModelAndPrice = () => {
       {/* Background Radial Glow */}
 
       <div className=" relative">
-        
         {/* Title Graphic / Image Header */}
-        <div className="relative lg:absolute lg:top-[-50px] lg:left-1/2 lg:-translate-x-1/2 w-full px-4 z-0 pointer-events-none mb-8 lg:mb-0 flex justify-center">
+        <div className="w-full px-4 z-10 mb-6 sm:mb-10 md:mb-0 flex justify-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-full flex justify-center items-center"
+            className="relative w-full flex justify-center items-center"
           >
             <h2
-              className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl xl:text-[110px] font-black uppercase tracking-wide text-transparent select-none text-center"
+              className="text-2xl xs:text-4xl sm:text-5xl md:text-7xl xl:text-[110px] font-black uppercase tracking-wider select-none text-center"
               style={{
-                WebkitTextStroke: "2.5px #80CF16",
-                textStroke: "2.5px #80CF16",
-                transform: "scaleY(1.45) scaleX(1.1)",
+                background: "linear-gradient(180deg, #80CF16 0%, #000000 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                transform: "scaleY(1.3) scaleX(1.18)",
                 transformOrigin: "center",
-                display: "inline-block"
+                display: "inline-block",
               }}
             >
               Phone Model & Price
@@ -90,8 +126,7 @@ const PhoneModelAndPrice = () => {
         </div>
 
         {/* 3-Column Layout */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center lg:pt-44">
-          
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center lg:pt-6">
           {/* Column 1: Large iPhone Image */}
           <div className="lg:col-span-4 flex justify-center order-2 lg:order-1 mt-6 lg:mt-0 relative z-20">
             <motion.div
@@ -113,10 +148,8 @@ const PhoneModelAndPrice = () => {
 
           {/* Column 2: Central Pricing Card & Slider Controls */}
           <div className="lg:col-span-6 flex flex-col items-center order-1 lg:order-2">
-            
             {/* Pricing Card */}
             <div className="w-full bg-[#111111]/80 backdrop-blur-md border border-white/[0.04] rounded-[28px] p-6 sm:p-10 shadow-2xl relative overflow-hidden min-h-[420px] flex flex-col justify-between">
-              
               {/* Card Contents with AnimatePresence for smooth transitions */}
               <AnimatePresence mode="wait">
                 <motion.div
@@ -162,7 +195,6 @@ const PhoneModelAndPrice = () => {
                   </div>
                 </motion.div>
               </AnimatePresence>
-
             </div>
 
             {/* Slider Controls */}
@@ -182,7 +214,6 @@ const PhoneModelAndPrice = () => {
                 <LuChevronRight size={20} className="stroke-[3]" />
               </button>
             </div>
-
           </div>
 
           {/* Column 3: Vertical Thumbnails List */}
@@ -212,9 +243,7 @@ const PhoneModelAndPrice = () => {
               );
             })}
           </div>
-
         </div>
-
       </div>
     </section>
   );
