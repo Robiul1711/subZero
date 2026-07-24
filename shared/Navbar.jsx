@@ -39,18 +39,18 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 w-full section-padding-x transition-all duration-300 border-b ${
           isScrolled
-            ? "bg-[#0D0D0D]/80 backdrop-blur-md border-white/5 py-4"
-            : "bg-transparent border-transparent py-4"
+            ? " bg-[#0D0D0D]/20 backdrop-blur-2xl border-white/5 py-4"
+            : " border-transparent py-4"
         }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center ">
             <Image
               src={logo}
               alt="CREMA INFORMATICA"
               height={50}
-              className="h-10 w-auto object-contain md:h-12"
+              className="h-10 w-auto object-contain md:h-12 bg-transparent "
               priority
             />
           </Link>

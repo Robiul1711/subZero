@@ -7,7 +7,6 @@ import { LuCheck, LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
 // Import assets
 import iphoneImg from "@/assets/iphone.png";
-import titleImg from "@/assets/PhoneModelandprice.png";
 
 const modelsData = [
   {
@@ -65,28 +64,33 @@ const PhoneModelAndPrice = () => {
     <section className="relative w-full py-12 md:py-24  overflow-hidden z-10 section-padding-x">
       {/* Background Radial Glow */}
 
-      <div className="max-w-7xl mx-auto relative">
+      <div className=" relative">
         
         {/* Title Graphic / Image Header */}
-        <div className="relative lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 w-full max-w-[650px] lg:max-w-[1250px] aspect-[12/2] lg:aspect-[12/1.5] z-0 pointer-events-none mb-8 lg:mb-0 flex justify-center">
+        <div className="relative lg:absolute lg:top-[-50px] lg:left-1/2 lg:-translate-x-1/2 w-full px-4 z-0 pointer-events-none mb-8 lg:mb-0 flex justify-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative w-full h-full"
+            className="relative w-full h-full flex justify-center items-center"
           >
-            <Image
-              src={titleImg}
-              alt="Phone Model and price"
-              fill
-              priority
-              className="object-contain"
-            />
+            <h2
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl xl:text-[110px] font-black uppercase tracking-wide text-transparent select-none text-center"
+              style={{
+                WebkitTextStroke: "2.5px #80CF16",
+                textStroke: "2.5px #80CF16",
+                transform: "scaleY(1.45) scaleX(1.1)",
+                transformOrigin: "center",
+                display: "inline-block"
+              }}
+            >
+              Phone Model & Price
+            </h2>
           </motion.div>
         </div>
 
         {/* 3-Column Layout */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center lg:pt-24">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center lg:pt-44">
           
           {/* Column 1: Large iPhone Image */}
           <div className="lg:col-span-4 flex justify-center order-2 lg:order-1 mt-6 lg:mt-0 relative z-20">
