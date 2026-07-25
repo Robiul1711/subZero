@@ -8,7 +8,7 @@ const WhyWebsite = () => {
     "M487.314 0.215576C476.404 75.3065 588.068 349.965 601.867 240.216C609.348 180.716 610.731 177.897 601.867 119.637C590.848 47.2156 493.745 90.2354 446.404 304.198C385.075 581.378 371.071 496.262 112.102 555.255C-304.086 650.063 575.974 758.022 748.348 748.716C1133.63 727.915 635.848 1158.72 438.348 1125.22C121.32 1071.44 1087.8 891.418 953.348 1158.72C827.848 1408.22 512.295 1521.79 363.848 1565.22";
 
   return (
-    <section className="relative w-full py-16 sm:py-24 overflow-hidden bg-[#0D0D0D] text-white">
+    <section className="relative w-full py-10  md:py-16  overflow-hidden bg-[#0D0D0D] text-white">
       <div className="w-full section-padding-x relative z-10">
         {/* Section Heading */}
         <div className="text-center mb-12 sm:mb-20">
@@ -25,7 +25,7 @@ const WhyWebsite = () => {
 
         {/* Desktop Interactive Flow using exact provided SVG path */}
         <div className="hidden lg:block relative w-full max-w-250 mx-auto aspect-968/1567 pt-4 mb-24">
-          {/* Background SVG curve */}
+          {/* Why Your Business Needs A Website*/}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
             viewBox="0 0 968 1567"
@@ -50,7 +50,7 @@ const WhyWebsite = () => {
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 2.2, ease: "easeInOut" }}
+              transition={{ duration: 6.0, ease: "easeInOut" }}
             />
 
             {/* Glowing Dot 1: 24/7 Online Presence (Positioned EXACTLY at start point of SVG path: cx=487.314, cy=0.215) */}
@@ -131,7 +131,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.6 }}
             className="absolute top-[-1%] left-[52%] max-w-65"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -149,7 +149,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.7 }}
             className="absolute top-[13.5%] left-[65%] max-w-65"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -167,7 +167,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
             className="absolute top-[26%] left-[4%] max-w-65"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -185,7 +185,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
             className="absolute top-[42%] left-[74%] max-w-62.5"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -203,7 +203,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 1.0 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
             className="absolute top-[66.5%] left-[8%] max-w-65"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -221,7 +221,7 @@ const WhyWebsite = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 1.2 }}
+            transition={{ duration: 0.3, delay: 1 }}
             className="absolute top-[101.5%] left-[36%] max-w-70"
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">

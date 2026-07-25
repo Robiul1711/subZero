@@ -192,21 +192,21 @@ function ServiceRow({
         isMobile ? "cursor-pointer" : "cursor-default"
       }`}
     >
-      <div className="relative z-10 flex flex-col py-7 md:flex-row md:items-center md:justify-between md:py-10">
+      <div className="relative z-10 flex flex-row items-center justify-between py-7 md:py-10">
         {/* Name & Index Section */}
-        <div className="flex items-baseline gap-6 md:gap-10 transition-transform duration-500 group-hover:translate-x-3">
+        <div className="flex items-center gap-3 sm:gap-6 transition-transform duration-500 group-hover:translate-x-3">
           <span className="font-mono text-sm sm:text-base text-secondary/60">
             ({index + 1})
           </span>
           <Link href={data.link} className="hover:text-primary transition-colors">
-            <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white/60 transition-colors duration-300 group-hover:text-white">
+            <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white/60 transition-colors duration-300 group-hover:text-white">
               {data.title}
             </h3>
           </Link>
         </div>
 
         {/* Role & Icon Section */}
-        <div className="mt-4 flex items-center justify-between pl-12 pr-2 md:mt-0 md:justify-end md:gap-8 md:pl-0 md:pr-0">
+        <div className="flex items-center justify-end pr-2 md:pr-0 md:gap-8">
           {/* Mobile Toggle Icon */}
           <div className="block md:hidden text-secondary">
             {isActive ? <LuMinus size={20} /> : <LuPlus size={20} />}

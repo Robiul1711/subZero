@@ -15,7 +15,7 @@ const WebsiteHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight sm:leading-[1.1]"
           >
             Custom Websites That Grow{" "}
             <span className="block text-primary mt-1 sm:mt-2">Your Business</span>
@@ -86,7 +86,7 @@ const WebsiteHero = () => {
 
           {/* Right: Typography Statement */}
           <div className="md:col-span-9">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed tracking-tight">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug sm:leading-relaxed tracking-tight">
               <span className="text-white font-bold">
                 We Create Modern, Responsive, And Scalable Websites Tailored To Your Business.
               </span>{" "}
