@@ -11,33 +11,33 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { name: 'Screen Replacement', href: '#screen-replacement' },
-    { name: 'Battery Repair', href: '#battery-repair' },
-    { name: 'Water Damage', href: '#water-damage' },
-    { name: 'Motherboard Repair', href: '#motherboard-repair' },
-    { name: 'Data Recovery', href: '#data-recovery' },
+    { name: 'Screen Replacement', href: '/repair-phone' },
+    { name: 'Battery Repair', href: '/repair-phone' },
+    { name: 'Water Damage', href: '/repair-phone' },
+    { name: 'Website Creation', href: '/website-creation' },
   ];
 
   const quickLinks = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Pre-Owned Devices', href: '#shop' },
-    { name: 'Repair Tracker', href: '#tracker' },
-    { name: 'Warranty Policy', href: '#warranty' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Home', href: '/' },
+    { name: 'Service', href: '/service' },
+    { name: 'Repair Phone', href: '/repair-phone' },
+    { name: 'Website Creation', href: '/website-creation' },
+    { name: 'Our Collection', href: '/collection' },
+    { name: 'Contact us', href: '/contact' },
   ];
 
   const socialLinks = [
-    { icon: FaFacebookF, href: '#facebook', label: 'Facebook' },
-    { icon: FaTwitter, href: '#twitter', label: 'Twitter' },
-    { icon: FaInstagram, href: '#instagram', label: 'Instagram' },
-    { icon: FaYoutube, href: '#youtube', label: 'YouTube' },
+    { icon: FaFacebookF, href: 'https://facebook.com', label: 'Facebook' },
+    { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
+    { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
   ];
 
   const contactInfo = [
-    { icon: LuMapPin, text: '142 Tech Street, San Francisco, CA 94105' },
-    { icon: LuPhone, text: '+1 (800) 555-REPAIR' },
-    { icon: LuMail, text: 'hello@irepair.com' },
-    { icon: LuClock, text: 'Mon-Sat 8am - 8pm' },
+    { icon: LuMapPin, text: '142 Tech Street, San Francisco, CA 94105', href: '/contact' },
+    { icon: LuPhone, text: '+1 (800) 555-REPAIR', href: 'tel:+18005557372' },
+    { icon: LuMail, text: 'hello@irepair.com', href: 'mailto:hello@irepair.com' },
+    { icon: LuClock, text: 'Mon-Sat 8am - 8pm', href: '/contact' },
   ];
 
   return (
@@ -124,10 +124,26 @@ const Footer = () => {
             <ul className="flex flex-col gap-4">
               {contactInfo.map((info, idx) => {
                 const Icon = info.icon;
+                const isExternal = info.href.startsWith("http") || info.href.startsWith("mailto:") || info.href.startsWith("tel:");
                 return (
-                  <li key={idx} className="flex items-start gap-3 text-sm text-secondary leading-relaxed">
-                    <Icon className="text-primary text-lg shrink-0 mt-0.5" />
-                    <span>{info.text}</span>
+                  <li key={idx}>
+                    {isExternal ? (
+                      <a
+                        href={info.href}
+                        className="flex items-start gap-3 text-sm text-secondary hover:text-primary transition-colors duration-300 leading-relaxed"
+                      >
+                        <Icon className="text-primary text-lg shrink-0 mt-0.5" />
+                        <span>{info.text}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={info.href}
+                        className="flex items-start gap-3 text-sm text-secondary hover:text-primary transition-colors duration-300 leading-relaxed"
+                      >
+                        <Icon className="text-primary text-lg shrink-0 mt-0.5" />
+                        <span>{info.text}</span>
+                      </Link>
+                    )}
                   </li>
                 );
               })}
@@ -139,16 +155,16 @@ const Footer = () => {
         {/* Bottom Sub-footer */}
         <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs sm:text-sm text-secondary text-center sm:text-left">
-            &copy; {currentYear} iRepair. All rights reserved.
+            &copy; {currentYear} CREMA INFORMATICA. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2">
-            <Link href="#privacy" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
+            <Link href="/contact" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
+            <Link href="/contact" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
               Terms of Service
             </Link>
-            <Link href="#cookies" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
+            <Link href="/contact" className="text-xs sm:text-sm text-secondary hover:text-primary transition-colors duration-300">
               Cookie Policy
             </Link>
           </div>

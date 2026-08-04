@@ -28,7 +28,7 @@ const CTA = () => {
           {/* Right Button Side */}
           <div className="relative z-10 shrink-0 self-center sm:self-auto">
             <Link
-              href="#services"
+              href="/service"
               className="inline-flex items-center justify-center bg-[#0D0D0D] text-white px-6 sm:px-8 py-3 rounded-[12px] text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#1C1C1C] hover:scale-105 active:scale-[0.98] shadow-lg cursor-pointer"
             >
               View Service

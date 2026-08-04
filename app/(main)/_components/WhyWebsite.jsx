@@ -61,7 +61,13 @@ const WhyWebsite = () => {
               fill="#80CF16"
               className="animate-pulse"
             />
-            <circle cx="487.314" cy="0.215" r="14" fill="#80CF16" fillOpacity="0.3" />
+            <circle
+              cx="487.314"
+              cy="0.215"
+              r="14"
+              fill="#80CF16"
+              fillOpacity="0.3"
+            />
 
             {/* Glowing Dot 2: Build Trust & Credibility */}
             <circle

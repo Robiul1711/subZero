@@ -126,9 +126,9 @@ const Banner = () => {
               variants={itemVariants}
               className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
             >
-              <GlowButton href="#book">Book a Repair</GlowButton>
+              <GlowButton href="/repair-phone">Book a Repair</GlowButton>
               <Link
-                href="#pricing"
+                href="/service"
                 className="rounded-[12px] border border-white/10 bg-white/[0.03] px-5 py-2 sm:px-8 sm:py-2.5 text-sm sm:text-base md:text-lg font-medium text-white transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] backdrop-blur-md"
               >
                 View Pricing

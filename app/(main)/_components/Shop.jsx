@@ -151,7 +151,7 @@ const Shop = () => {
           transition={{ delay: 0.2, type: "spring", stiffness: 80 }}
           className="flex justify-center mt-12 sm:mt-16"
         >
-          <GlowButton>View All</GlowButton>
+          <GlowButton href={'/collection'}>View All</GlowButton>
         </motion.div>
       </div>
     </section>
