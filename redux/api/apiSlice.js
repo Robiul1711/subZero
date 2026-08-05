@@ -6,88 +6,130 @@ export const apiSlice = createApi({
   refetchOnFocus: true,
   refetchOnReconnect: true,
   baseQuery: baseQueryWithInterceptor,
-  tagTypes: ["User", "Products", "Orders"],
+  tagTypes: [
+
+    "Footer",
+    "Testimonials",
+    "GoogleReviewsMeta",
+    "Policies",
+    "HomepageCms",
+    "CombinedSections",
+    "Products",
+    "Devices",
+    "ModelServices",
+    "RepairPhoneCms",
+  ],
+
   endpoints: builder => ({
-    login: builder.mutation({
-      query: payload => ({
-        url: "/auth/login",
-        method: "POST",
-        body: payload,
-      }),
+    getFooter: builder.query({
+      query: () => "/cms/footer",
+      providesTags: ["Footer"],
     }),
 
-    register: builder.mutation({
-      query: payload => ({
-        url: "/users/add",
-        method: "POST",
-        body: payload,
-      }),
-    }),
-
-    logout: builder.mutation({
-      query: () => ({
-        url: "/auth/logout",
-        method: "POST",
-      }),
-    }),
-
-    getMe: builder.query({
-      query: () => ({
-        url: "/auth/me",
-        method: "GET",
-      }),
-    }),
-
-    getProducts: builder.query({
-      query: () => "/products",
-      providesTags: ["Products"],
-    }),
-
-    getData: builder.query({
-      query: ({ limit, color, price, search, category }) => ({
-        url: "/products",
-        method: "GET",
-        params: {
-          limit,
-          color,
-          price,
-          search,
-          category,
-        },
-      }),
-    }),
-
-    getAllData: builder.query({
+    getTestimonials: builder.query({
       query: params => ({
-        url: "/products",
+        url: "/testimonials",
         method: "GET",
         params,
       }),
+      providesTags: ["Testimonials"],
     }),
 
-    addProduct: builder.mutation({
+    getGoogleReviewsMeta: builder.query({
+      query: () => "/google-reviews/meta",
+      providesTags: ["GoogleReviewsMeta"],
+    }),
+
+    sendContact: builder.mutation({
       query: payload => ({
-        url: "/products",
+        url: "/contact",
         method: "POST",
         body: payload,
       }),
-
-      invalidatesTags: ["Products"],
     }),
 
-    getPosts: builder.query({
-      query: page => `/posts?_page=${page}&_limit=5`,
-      keepUnusedDataFor: 60,
+    getPrivacyPolicy: builder.query({
+      query: () => "/privacy-policy",
+      providesTags: ["Policies"],
+    }),
+
+    getTermsOfService: builder.query({
+      query: () => "/terms-of-service",
+      providesTags: ["Policies"],
+    }),
+
+    getCookiePolicy: builder.query({
+      query: () => "/cookie-policy",
+      providesTags: ["Policies"],
+    }),
+
+    getWarrantyPolicy: builder.query({
+      query: () => "/warranty-policy",
+      providesTags: ["Policies"],
+    }),
+
+    getHomepageCms: builder.query({
+      query: () => "/cms/homepage",
+      providesTags: ["HomepageCms"],
+    }),
+
+    getCombinedSections: builder.query({
+      query: () => "/cms/combined-sections",
+      providesTags: ["CombinedSections"],
+    }),
+
+    getProductConditions: builder.query({
+      query: (params) => ({
+        url: "/product-conditions",
+        method: "GET",
+        params,
+      }),
+      providesTags: ["Products"],
+    }),
+
+    getProductConditionDetails: builder.query({
+      query: (slugOrId) => `/product-conditions/${slugOrId}`,
+      providesTags: ["Products"],
+    }),
+
+
+    getDevices: builder.query({
+      query: () => "/devices",
+      providesTags: ["Devices"],
+    }),
+
+    getDeviceDetails: builder.query({
+      query: (id) => `/devices/${id}`,
+      providesTags: ["Devices"],
+    }),
+
+    getModelServices: builder.query({
+      query: (modelId) => `/models/${modelId}/services`,
+      providesTags: ["ModelServices"],
+    }),
+
+    getRepairPhoneCms: builder.query({
+      query: () => "/cms/repair-phone",
+      providesTags: ["RepairPhoneCms"],
     }),
   }),
 });
 
 export const {
-  useLoginMutation,
-  useLogoutMutation,
-  useRegisterMutation,
-  useGetMeQuery,
-  useGetProductsQuery,
-  useAddProductMutation,
-  useGetPostsQuery,
+  useGetFooterQuery,
+  useGetTestimonialsQuery,
+  useGetGoogleReviewsMetaQuery,
+  useSendContactMutation,
+  useGetPrivacyPolicyQuery,
+  useGetTermsOfServiceQuery,
+  useGetCookiePolicyQuery,
+  useGetWarrantyPolicyQuery,
+  useGetHomepageCmsQuery,
+  useGetCombinedSectionsQuery,
+  useGetProductConditionsQuery,
+  useGetProductConditionDetailsQuery,
+  useGetDevicesQuery,
+  useGetDeviceDetailsQuery,
+  useGetModelServicesQuery,
+  useGetRepairPhoneCmsQuery,
 } = apiSlice;

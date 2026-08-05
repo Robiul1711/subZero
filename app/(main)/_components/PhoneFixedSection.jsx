@@ -3,12 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useGetCombinedSectionsQuery } from "@/redux/api/apiSlice";
 
-// Import assets
 import leftangle from "@/assets/leftangle.png";
 import rightangle from "@/assets/rightangle.png";
 import fixedImg from "@/assets/Fixed.png";
 import dualphone from "@/assets/dualphone.png";
+
 
 const leftArrowPath =
   "M214.802 211.239C212.932 211.855 211.46 212.145 210.168 212.809C188.05 224.145 164.664 231.107 139.917 233.258C125.704 234.482 111.715 233.176 98.0242 229.066C96.2763 228.546 94.5517 227.88 92.3613 227.124C93.2146 226.105 93.7748 225.324 94.4695 224.64C100.777 218.235 105.633 210.952 108.193 202.266C108.712 200.518 109.124 198.693 109.417 196.864C111.531 183.454 105.679 171.428 94.2339 165.665C82.192 159.598 67.5608 161.746 58.3202 171.104C48.7361 180.827 46.4064 192.206 51.1005 204.993C54.76 214.959 62.0542 221.903 70.4364 227.956C71.1904 228.497 72.0023 228.957 72.7294 229.478C72.8371 229.556 72.86 229.694 73.148 230.146C72.2958 230.595 71.4857 231.155 70.6182 231.512C47.7143 240.531 19.0202 227.944 13.4167 199.538C10.7086 185.688 12.7647 172.359 18.7486 159.809C22.8294 151.276 27.7262 143.084 32.6037 134.919C37.9488 125.989 43.7827 117.286 47.4383 107.47C53.0228 92.3495 53.6189 77.0764 48.664 61.6962C43.3608 45.2098 33.9849 31.1037 23.0895 17.8652C22.586 17.2595 22.0633 16.6807 21.5792 16.0479C21.4293 15.8589 21.3373 15.589 21.0189 14.9527C22.2932 15.3366 23.3252 15.5467 24.2413 15.9183C30.3965 18.2533 36.5401 20.6614 42.7146 22.9694C44.4315 23.5891 46.2451 24.0742 48.0433 24.4668C49.7414 24.8284 51.2755 24.3383 52.13 22.749C52.9844 21.1597 53.2383 19.3844 51.9275 17.9141C50.882 16.7564 49.6784 15.6484 48.3238 14.9215C44.9643 13.1236 41.5895 11.2332 38.0018 9.92415C29.2481 6.6634 20.3241 3.81072 11.5241 0.557582C7.65539 -0.871477 4.54729 0.732604 1.36256 2.15941C-0.0293672 2.79229 -0.143893 4.25985 0.103835 5.62018C0.580584 8.0827 0.945515 10.5873 1.69209 12.9579C5.02267 23.666 8.44573 34.3589 11.9344 45.0172C12.6581 47.2491 13.5475 49.4774 14.6336 51.6021C15.7044 53.6343 17.4558 54.3197 19.2019 53.8185C21.0597 53.2751 22.0675 52.0404 21.7143 49.4626C21.0606 44.9156 20.1218 40.3681 19.0981 35.8821C18.3532 32.6563 17.2461 29.5377 16.3431 26.3617C16.1136 25.5445 16.0151 24.6583 15.7405 23.2787C16.5905 23.9699 17.06 24.2251 17.3404 24.6301C24.183 34.0238 30.8481 43.4941 35.6041 54.205C42.3659 69.4539 44.2037 85.0861 39.5378 101.314C37.5635 108.217 34.5116 114.633 30.8438 120.77C26.4263 128.123 21.7202 135.31 17.222 142.605C11.4484 151.962 6.33701 161.591 3.62326 172.368C1.16579 182.106 0.572633 191.916 2.57966 201.797C8.32959 230.226 33.1321 247.16 62.8593 241.647C68.7361 240.561 74.3219 238.573 79.5629 235.644C81.0437 234.83 82.3233 234.524 84.0285 235.217C102.482 242.58 121.62 244.44 141.198 242.047C162.614 239.424 183.043 233.4 202.243 223.518C205.528 221.837 208.614 219.81 211.611 217.677C213.355 216.44 215.219 214.922 214.81 211.285L214.802 211.239ZM84.0671 223.337C75.4192 219.133 68.4307 213.468 63.4766 205.592C59.3328 199.031 57.4361 191.839 59.5045 184.065C62.8069 171.671 74.9449 166.063 86.5489 171.49C95.8629 175.846 101.01 185.329 99.579 196.251C98.1747 207.193 92.6874 215.981 84.0864 223.31L84.0671 223.337Z";
@@ -34,6 +35,13 @@ const arrowVariants = {
 };
 
 const PhoneFixedSection = () => {
+  const { data: combinedResponse } = useGetCombinedSectionsQuery();
+  const repairData = combinedResponse?.data?.repair || {};
+
+  const text1 = repairData.text_1 || "Get Fixed in 30 Min";
+  const text2 = repairData.text_2 || "7-days Money-back Guarantee";
+  const cmsImage = repairData.image;
+
   return (
     <section className="relative w-full py-16 md:py-24  overflow-hidden z-10">
       {/* Background Left Angle */}
@@ -90,7 +98,7 @@ const PhoneFixedSection = () => {
               className="md:absolute md:left-[10%] lg:left-[15%] xl:left-[20%] top-[25%] flex flex-col items-center text-center max-w-[160px] z-20"
             >
               <span className="text-white text-sm sm:text-base font-bold leading-tight select-none">
-                Get Fixed in <br /> 30 Min
+                {text1}
               </span>
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mt-3 text-primary flex items-center justify-center">
                 <svg
@@ -113,7 +121,7 @@ const PhoneFixedSection = () => {
               </div>
             </motion.div>
 
-            {/* Center: Cracked dual phones preview */}
+            {/* Center: Dual phones / CMS repair image preview */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -121,13 +129,21 @@ const PhoneFixedSection = () => {
               transition={{ duration: 0.6 }}
               className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[390px] md:h-[390px] lg:w-[450px] lg:h-[450px] z-10 drop-shadow-[0_15px_40px_rgba(0,0,0,0.6)]"
             >
-              <Image
-                src={dualphone}
-                alt="Cracked Phone Screen Mockup"
-                fill
-                priority
-                className="object-contain"
-              />
+              {cmsImage ? (
+                <img
+                  src={cmsImage}
+                  alt="Repair Phone Showcase"
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <Image
+                  src={dualphone}
+                  alt="Cracked Phone Screen Mockup"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              )}
             </motion.div>
 
             {/* Right Badge: 7-days Money-back Guarantee */}
@@ -139,7 +155,7 @@ const PhoneFixedSection = () => {
               className="md:absolute md:right-[10%] lg:right-[15%] xl:right-[20%] top-[25%] flex flex-col items-center text-center max-w-[170px] z-20"
             >
               <span className="text-white text-sm sm:text-base font-bold leading-tight select-none">
-                7-days <br /> Money-back <br /> Guarantee
+                {text2}
               </span>
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mt-3 text-primary flex items-center justify-center">
                 <svg
@@ -193,3 +209,4 @@ const PhoneFixedSection = () => {
 };
 
 export default PhoneFixedSection;
+

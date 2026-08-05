@@ -2,14 +2,23 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useGetHomepageCmsQuery } from '@/redux/api/apiSlice';
 
 const Stats = () => {
-  const statItems = [
+  const { data: homepageCmsResponse } = useGetHomepageCmsQuery();
+  const section2 = homepageCmsResponse?.data?.section_2 || {};
+
+  const defaultStats = [
     { value: '50K+', label: 'Devices Repaired' },
     { value: '4.9★', label: 'Average Rating' },
     { value: '120+', label: 'Certified Techs' },
     { value: '1 Year', label: 'Repair Warranty' },
   ];
+
+  const statItems = section2.stats && section2.stats.length > 0
+    ? section2.stats
+    : defaultStats;
+
 
   return (
     <section className="w-full bg-secondary/1 relative z-10">

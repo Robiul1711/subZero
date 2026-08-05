@@ -2,13 +2,27 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { GlowButton } from "@/components/common/GlowButton";
 import { motion } from "framer-motion";
 import phone1 from "@/assets/phone1.png";
-import phone2 from "@/assets/phone2.png";
+import { useGetCombinedSectionsQuery, useGetProductConditionsQuery } from "@/redux/api/apiSlice";
 
 const Shop = () => {
-  const devices = [
+  const { data: combinedResponse } = useGetCombinedSectionsQuery();
+  const { data: response, isLoading } = useGetProductConditionsQuery({ per_page: 4 });
+
+  const marketplace = combinedResponse?.data?.marketplace || {};
+
+  const badgeText = marketplace.title || "Certified Pre-Owned";
+  const mainTitle = marketplace.sub_title || "Device Marketplace";
+  const shortDescription = marketplace.short_description
+    ? marketplace.short_description.replace(/<[^>]+>/g, "")
+    : "";
+
+  const apiProducts = response?.data || [];
+
+  const defaultDevices = [
     {
       id: 1,
       title: "iPhone 15 Pro",
@@ -23,7 +37,7 @@ const Shop = () => {
       badge: "Excellent",
       price: "$589",
       originalPrice: "$899",
-      image: phone2,
+      image: phone1,
     },
     {
       id: 3,
@@ -39,9 +53,23 @@ const Shop = () => {
       badge: "Like New",
       price: "$479",
       originalPrice: "$799",
-      image: phone2,
+      image: phone1,
     },
   ];
+
+  const devicesList = apiProducts.length > 0
+    ? apiProducts.map((item) => ({
+        id: item.id,
+        slug: item.slug,
+        productId: item.product_id || item.id,
+        title: item.name,
+        badge: item.condition || "Refurbished",
+        price: item.offer_price ? `$${item.offer_price}` : "Contact Us",
+        originalPrice: item.old_price ? `$${item.old_price}` : null,
+        image: item.thumbnail || phone1,
+      }))
+    : defaultDevices;
+
 
   return (
     <section className="relative w-full ">
@@ -58,90 +86,121 @@ const Shop = () => {
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
-            Shop
+            {badgeText}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
-            Certified Pre-Owned Devices
+            {mainTitle}
           </h2>
+          {shortDescription && (
+            <p className="mt-4 text-xs sm:text-sm md:text-base text-secondary leading-relaxed max-w-2xl mx-auto">
+              {shortDescription}
+            </p>
+          )}
         </motion.div>
 
         {/* Devices Grid */}
-        <motion.div 
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-              }
-            }
-          }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {devices.map((device) => (
-            <motion.div
-              key={device.id}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: {
-                    type: "spring",
-                    stiffness: 90,
-                    damping: 14
-                  }
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="bg-[#121212]/30 border border-white/5 rounded-[24px] p-5 animate-pulse">
+                <div className="w-full aspect-[4/3] rounded-[18px] bg-white/5 mb-5" />
+                <div className="h-4 bg-white/10 rounded w-1/3 mb-2" />
+                <div className="h-5 bg-white/10 rounded w-2/3 mb-4" />
+                <div className="h-10 bg-white/10 rounded-xl" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
                 }
-              }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="bg-[#121212]/30 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between group cursor-default"
-            >
-              <div>
-                {/* Image Container */}
-                <div className="relative w-full aspect-[4/3] rounded-[18px] overflow-hidden">
-                  <Image
-                    src={device.image}
-                    alt={device.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
+              }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {devicesList.slice(0, 4).map((device) => (
 
-                {/* Card Content */}
-                <div className="mt-5 flex flex-col items-start">
-                  {/* Status Badge */}
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide bg-primary/10 border border-primary/20 text-primary mb-3">
-                    {device.badge}
-                  </span>
+              <motion.div
+                key={device.id}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 90,
+                      damping: 14
+                    }
+                  }
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="bg-[#121212]/30 border border-white/5 hover:border-primary/20 rounded-[24px] p-5 flex flex-col justify-between group cursor-default"
+              >
+                <div>
+                  {/* Image Container */}
+                  <div className="relative w-full aspect-[4/3] rounded-[18px] overflow-hidden bg-[#0a0a0a]/60 border border-white/5 flex items-center justify-center">
+                    {typeof device.image === "string" ? (
+                      <img
+                        src={device.image}
+                        alt={device.title}
+                        className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <Image
+                        src={device.image}
+                        alt={device.title}
+                        fill
+                        className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    )}
+                  </div>
 
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 tracking-tight transition-colors duration-300 group-hover:text-primary">
-                    {device.title}
-                  </h3>
-
-                  {/* Pricing */}
-                  <div className="flex items-baseline gap-2 mb-5">
-                    <span className="text-xl font-bold text-primary">
-                      {device.price}
+                  {/* Card Content */}
+                  <div className="mt-5 flex flex-col items-start">
+                    {/* Status Badge */}
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide bg-primary/10 border border-primary/20 text-primary mb-3">
+                      {device.badge}
                     </span>
-                    <span className="text-xs sm:text-sm text-secondary line-through font-medium">
-                      {device.originalPrice}
-                    </span>
+
+                    {/* Title */}
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-2 tracking-tight transition-colors duration-300 group-hover:text-primary leading-snug">
+                      {device.title}
+                    </h3>
+
+                    {/* Pricing */}
+                    <div className="flex items-baseline gap-2 mb-5">
+                      <span className="text-xl font-bold text-primary">
+                        {device.price}
+                      </span>
+                      {device.originalPrice && (
+                        <span className="text-xs sm:text-sm text-secondary line-through font-medium">
+                          {device.originalPrice}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Action Button */}
-              <button className="w-full py-2.5 rounded-[12px] border border-white/10 bg-white/[0.02] text-sm font-semibold text-white transition-all duration-300 hover:border-primary hover:bg-primary hover:text-[#0D0D0D]">
-                Enquire Now
-              </button>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Action Button */}
+                <Link href={`/collection/details?slug=${device.slug || device.id}`}>
+                  <button className="w-full py-2.5 rounded-[12px] border border-white/10 bg-white/[0.02] text-sm font-semibold text-white transition-all duration-300 hover:border-primary hover:bg-primary hover:text-[#0D0D0D] cursor-pointer">
+                    Enquire Now
+                  </button>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
 
         {/* View All Button */}
         <motion.div 

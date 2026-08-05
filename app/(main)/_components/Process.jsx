@@ -13,9 +13,17 @@ import {
   LuBadgeCheck,
 } from "react-icons/lu";
 import Link from "next/link";
+import { useGetHomepageCmsQuery } from "@/redux/api/apiSlice";
+
+const stepIcons = [LuPhone, LuWrench, LuShield, LuBadgeCheck];
 
 const Process = () => {
   const [activeCategory, setActiveCategory] = useState("phone");
+  const { data: homepageCmsResponse } = useGetHomepageCmsQuery();
+  const section3 = homepageCmsResponse?.data?.section_3 || {};
+
+  const title = section3.title || "Easy Repair In 4 Simple Steps";
+  const shortDescription = section3.short_description || "We’ve streamlined the repair experience so you can get your device back fast with zero hassle.";
 
   const categories = [
     { id: "phone", name: "Phone Repair", icon: LuSmartphone },
@@ -24,7 +32,7 @@ const Process = () => {
     { id: "watch", name: "Watch Repair", icon: LuWatch },
   ];
 
-  const steps = [
+  const defaultSteps = [
     {
       icon: LuPhone,
       title: "Book Appointment",
@@ -50,6 +58,15 @@ const Process = () => {
         "Schedule a repair visit online or walk in to any of our service centers at your convenience.",
     },
   ];
+
+  const stepsList = section3.steps && section3.steps.length > 0
+    ? section3.steps.map((step, idx) => ({
+        icon: stepIcons[idx % stepIcons.length],
+        title: step.title,
+        description: step.description,
+      }))
+    : defaultSteps;
+
 
   return (
     <section className="w-full pt-12 pb-16 sm:py-20 lg:py-24 relative overflow-hidden">
@@ -112,11 +129,10 @@ const Process = () => {
             Our Process
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
-            Easy Repair In 4 Simple Steps
+            {title}
           </h2>
           <p className="mt-4 text-xs sm:text-sm md:text-base text-secondary leading-relaxed max-w-2xl mx-auto">
-            We’ve streamlined the repair experience so you can get your device
-            back fast with zero hassle.
+            {shortDescription}
           </p>
         </motion.div>
 
@@ -136,7 +152,7 @@ const Process = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {steps.map((step, idx) => {
+          {stepsList.map((step, idx) => {
             const StepIcon = step.icon;
             return (
               <motion.div
@@ -173,6 +189,7 @@ const Process = () => {
             );
           })}
         </motion.div>
+
       </div>
     </section>
   );

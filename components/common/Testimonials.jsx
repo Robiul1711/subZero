@@ -5,78 +5,39 @@ import { FaStar } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
+import { useGetTestimonialsQuery, useGetCombinedSectionsQuery } from "@/redux/api/apiSlice";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Mitchell",
-      device: "iPhone User",
-      initials: "SM",
-      text: '"My cracked screen was fixed in under an hour. The technician was professional and the quality is outstanding. Looks brand new!"',
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "James Okafor",
-      device: "MacBook Owner",
-      initials: "JO",
-      text: '"Brought in my water-damaged MacBook expecting bad news. They recovered everything and repaired it for a very fair price. Incredible service."',
-      rating: 4,
-    },
-    {
-      id: 3,
-      name: "Priya Sharma",
-      device: "Samsung User",
-      initials: "PS",
-      text: '"Outstanding customer support. They diagnosed the charging port issue quickly and repaired it within the same day. Transparent pricing too!"',
-      rating: 5,
-    },
-    {
-      id: 4,
-      name: "Tom Brennan",
-      device: "iPad User",
-      initials: "TB",
-      text: '"Great experience from start to finish. The booking system is super easy and the repair was done ahead of schedule."',
-      rating: 4,
-    },
-    {
-      id: 5,
-      name: "Marcus Aurelius",
-      device: "PS5 Gamer",
-      initials: "MA",
-      text: '"Exceptional HDMI port replacement on my console. Done on the same day and works perfectly now. Fast service and honest pricing!"',
-      rating: 5,
-    },
-    {
-      id: 6,
-      name: "Sophia Chen",
-      device: "iPad Pro User",
-      initials: "SC",
-      text: '"Needed a quick battery replacement for my iPad before a business trip. They sorted it in 2 hours. Battery life is fantastic now!"',
-      rating: 5,
-    },
-    {
-      id: 7,
-      name: "David K.",
-      device: "Dell XPS Owner",
-      initials: "DK",
-      text: '"Great experience. Replaced my broken laptop screen and keyboard. Super clean job, very friendly and helpful staff."',
-      rating: 4,
-    },
-    {
-      id: 8,
-      name: "Amara Diallo",
-      device: "Apple Watch User",
-      initials: "AD",
-      text: '"Very fast screen repair on my Apple Watch. Touch screen is fully functional and responsive, looks completely original. 10/10!"',
-      rating: 5,
-    },
-  ];
+  const { data: apiResponse, isLoading } = useGetTestimonialsQuery({
+    star_min: 4,
+    star_max: 5,
+  });
+
+  const { data: combinedResponse } = useGetCombinedSectionsQuery();
+  const testimonialTitle = combinedResponse?.data?.testimonial?.title || "What Our Customers Say";
+
+  const apiTestimonials = apiResponse?.data || [];
+
+
+  const testimonialsList = apiTestimonials.map((t) => ({
+    id: t.id,
+    name: t.name,
+    device: t.device_name || "Google Review",
+    time: t.relative_time_description,
+    image: t.image,
+    author_url: t.author_url,
+    initials: t.name
+      ? t.name.split(" ").map((n) => n[0]).join("").substring(0, 2).toUpperCase()
+      : "U",
+    text: t.message ? `"${t.message}"` : "",
+    rating: Number(t.star) || 5,
+  }));
+
+
 
   return (
     <section className="w-full py-10 sm:py-16 lg:py-20 relative overflow-hidden">
@@ -93,8 +54,9 @@ const Testimonials = () => {
             Testimonials
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
-            What Our Customers Say
+            {testimonialTitle}
           </h2>
+
         </motion.div>
 
         {/* Testimonials Swiper Wrapper */}
@@ -131,7 +93,7 @@ const Testimonials = () => {
             }}
           
           >
-            {testimonials.map((t) => (
+            {testimonialsList.map((t) => (
               <SwiperSlide key={t.id} className="h-auto flex flex-col py-10! sm:py-16! px-2">
                 <motion.div 
                   whileHover={{ y: -6 }}
@@ -158,19 +120,47 @@ const Testimonials = () => {
 
                   {/* Customer Info */}
                   <div className="flex items-center gap-3 mt-auto">
-                    {/* Initials Circle */}
-                    <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary shrink-0 transition-colors duration-300 group-hover:bg-primary/20 group-hover:border-primary/40">
-                      {t.initials}
-                    </div>
+                    {/* Image or Initials Circle */}
+                    {t.image ? (
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        referrerPolicy="no-referrer"
+                        className="w-10 h-10 rounded-full object-cover shrink-0 border border-primary/20"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.style.display = 'none';
+                          e.target.nextSibling?.classList.remove('hidden');
+                        }}
+                      />
+                    ) : null}
+                    {(!t.image || true) && (
+                      <div className={`w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary shrink-0 transition-colors duration-300 group-hover:bg-primary/20 group-hover:border-primary/40 ${t.image ? 'hidden' : ''}`}>
+                        {t.initials}
+                      </div>
+                    )}
 
-                    {/* Name & Device */}
+
+                    {/* Name & Device / Review link */}
                     <div>
-                      <h4 className="text-sm sm:text-base font-bold text-white transition-colors duration-300 group-hover:text-primary">
-                        {t.name}
-                      </h4>
+                      {t.author_url ? (
+                        <a
+                          href={t.author_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm sm:text-base font-bold text-white transition-colors duration-300 group-hover:text-primary block hover:underline"
+                        >
+                          {t.name}
+                        </a>
+                      ) : (
+                        <h4 className="text-sm sm:text-base font-bold text-white transition-colors duration-300 group-hover:text-primary">
+                          {t.name}
+                        </h4>
+                      )}
                       <p className="text-xs text-secondary font-medium">
-                        {t.device}
+                        {t.device}{t.time ? ` • ${t.time}` : ''}
                       </p>
+
                     </div>
                   </div>
                 </motion.div>
@@ -203,3 +193,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+

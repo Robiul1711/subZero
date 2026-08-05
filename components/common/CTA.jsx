@@ -3,8 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useGetCombinedSectionsQuery } from "@/redux/api/apiSlice";
 
 const CTA = () => {
+  const { data: combinedResponse } = useGetCombinedSectionsQuery();
+  const bannerData = combinedResponse?.data?.banner || {};
+
+  const title = bannerData.title || "Device broken? We fix it fast.";
+  const subText = bannerData.sub_text || "Walk in or book online — most repairs done in under 2 hours.";
+
   return (
     <section className="w-full pb-12 sm:pb-16 relative overflow-hidden">
       <div className="w-full section-padding-x">
@@ -18,12 +25,13 @@ const CTA = () => {
           {/* Left Text Side */}
           <div className="flex flex-col items-center sm:items-start relative z-10 max-w-2xl">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0D0D0D] tracking-tight">
-              Device broken? We fix it fast.
+              {title}
             </h2>
             <p className="text-xs sm:text-sm text-[#0D0D0D]/80 font-medium mt-2">
-              Walk in or book online — most repairs done in under 2 hours.
+              {subText}
             </p>
           </div>
+
 
           {/* Right Button Side */}
           <div className="relative z-10 shrink-0 self-center sm:self-auto">

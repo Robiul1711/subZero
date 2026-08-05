@@ -11,34 +11,84 @@ import { FcGoogle } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
 import { FlipWords } from "@/components/common/FlipWords";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { useGetGoogleReviewsMetaQuery, useGetHomepageCmsQuery } from "@/redux/api/apiSlice";
+
+const defaultPositions = [
+  "top-[10%] left-1 sm:-left-6 lg:-left-2 xl:left-4",
+  "top-[2%] right-2 sm:-right-4 lg:right-12 xl:right-20",
+  "bottom-[22%] left-1 sm:-left-6 lg:-left-2 xl:left-4",
+  "bottom-[12%] right-2 sm:right-0 lg:right-4 xl:right-10",
+];
+
+const defaultAnimClasses = [
+  "animate-float-1",
+  "animate-float-2",
+  "animate-float-3",
+  "animate-float-4",
+];
 
 const Banner = () => {
-  const serviceBadges = [
-    {
-      title: "Battery Swap",
-      price: "$10",
-      position: "top-[10%] left-1 sm:-left-6 lg:-left-2 xl:left-4",
-      animClass: "animate-float-1",
-    },
-    {
-      title: "Screen Repair",
-      price: "$120",
-      position: "top-[2%] right-2 sm:-right-4 lg:right-12 xl:right-20",
-      animClass: "animate-float-2",
-    },
-    {
-      title: "Water Damage",
-      price: "$120",
-      position: "bottom-[22%] left-1 sm:-left-6 lg:-left-2 xl:left-4",
-      animClass: "animate-float-3",
-    },
-    {
-      title: "Charging Port",
-      price: "$12",
-      position: "bottom-[12%] right-2 sm:right-0 lg:right-4 xl:right-10",
-      animClass: "animate-float-4",
-    },
-  ];
+  const { data: googleMetaResponse } = useGetGoogleReviewsMetaQuery();
+  const { data: homepageCmsResponse } = useGetHomepageCmsQuery();
+
+  const googleMeta = googleMetaResponse?.data;
+  const section1 = homepageCmsResponse?.data?.section_1 || {};
+
+  const rating = googleMeta?.rating ? Number(googleMeta.rating).toFixed(1) : "4.7";
+  const userRatingsTotal = googleMeta?.user_ratings_total
+    ? `${googleMeta.user_ratings_total}+`
+    : "364+";
+
+  const headerText = section1.header_text || "Keep your money safe";
+  const mainTitle = section1.title || "We Fix Gadgets";
+  const descriptionText = section1.header_description
+    ? section1.header_description.replace(/<[^>]+>/g, "")
+    : "Certified technicians. Genuine parts. Instant online quotes for iPhones, iPads, tablets & consoles - no guesswork, no surprises.";
+
+  const flipWordsList = section1.features && section1.features.length > 0
+    ? section1.features
+    : [
+        "Like New Again.",
+        "Fast & Reliable.",
+        "With Genuine Parts.",
+        "With Warranty.",
+        "At Best Prices.",
+      ];
+
+  const serviceBadges = section1.pricing && section1.pricing.length > 0
+    ? section1.pricing.map((item, idx) => ({
+        title: item.text,
+        price: item.price,
+        position: defaultPositions[idx % defaultPositions.length],
+        animClass: defaultAnimClasses[idx % defaultAnimClasses.length],
+      }))
+    : [
+        {
+          title: "Battery Swap",
+          price: "$10",
+          position: defaultPositions[0],
+          animClass: defaultAnimClasses[0],
+        },
+        {
+          title: "Screen Repair",
+          price: "$120",
+          position: defaultPositions[1],
+          animClass: defaultAnimClasses[1],
+        },
+        {
+          title: "Water Damage",
+          price: "$120",
+          position: defaultPositions[2],
+          animClass: defaultAnimClasses[2],
+        },
+        {
+          title: "Charging Port",
+          price: "$12",
+          position: defaultPositions[3],
+          animClass: defaultAnimClasses[3],
+        },
+      ];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,7 +139,7 @@ const Banner = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <span className="text-xs font-semibold tracking-wider text-primary uppercase">
-                Keep your money safe
+                {headerText}
               </span>
             </motion.div>
 
@@ -98,15 +148,9 @@ const Banner = () => {
               variants={itemVariants}
               className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight text-white leading-[1.15]"
             >
-              We Fix Gadgets <br />
+              {mainTitle} <br />
               <FlipWords
-                words={[
-                  "Like New Again.",
-                  "Fast & Reliable.",
-                  "With Genuine Parts.",
-                  "With Warranty.",
-                  "At Best Prices.",
-                ]}
+                words={flipWordsList}
                 duration={3000}
                 className="text-primary"
               />
@@ -117,9 +161,9 @@ const Banner = () => {
               variants={itemVariants}
               className="mt-6 text-base sm:text-lg text-secondary max-w-2xl leading-relaxed"
             >
-              Certified technicians. Genuine parts. Instant online quotes for
-              iPhones, iPads, tablets & consoles - no guesswork, no surprises.
+              {descriptionText}
             </motion.p>
+
 
             {/* Action Buttons */}
             <motion.div 
@@ -154,7 +198,7 @@ const Banner = () => {
 
               <div className="flex-1">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-bold text-white">4.9</span>
+                  <span className="text-xl font-bold text-white">{rating}</span>
                   <div className="flex items-center text-amber-400">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} />
@@ -162,9 +206,10 @@ const Banner = () => {
                   </div>
                 </div>
                 <p className="text-xs text-secondary mt-0.5">
-                  From 2.455+ Google Reviews
+                  From {userRatingsTotal} Google Reviews
                 </p>
               </div>
+
 
               <div className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 mt-2 sm:mt-0 self-start sm:self-auto">
                 <span className="h-1 w-1 rounded-full bg-primary" />

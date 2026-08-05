@@ -7,8 +7,16 @@ import { LuUser, LuMail, LuPhone } from "react-icons/lu";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import contactImg from "@/assets/contact.png";
+import { useSendContactMutation, useGetCombinedSectionsQuery } from "@/redux/api/apiSlice";
 
 const ContactSection = () => {
+  const [sendContact, { isLoading }] = useSendContactMutation();
+  const { data: combinedResponse } = useGetCombinedSectionsQuery();
+  const contactUsData = combinedResponse?.data?.contact_us || {};
+
+  const sectionTitle = contactUsData.title || "Get In Touch With Us";
+  const sectionImage = contactUsData.image || contactImg;
+
   const {
     register,
     handleSubmit,
@@ -23,9 +31,20 @@ const ContactSection = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    toast.success("Thank you! We've received your request and will contact you shortly.");
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      const formData = new FormData();
+      formData.append("full_name", data.name);
+      formData.append("email", data.email);
+      formData.append("number", data.number);
+      formData.append("message", data.message);
+
+      const res = await sendContact(formData).unwrap();
+      toast.success(res?.message || "Thank you! We've received your request and will contact you shortly.");
+      reset();
+    } catch (err) {
+      toast.error(err?.data?.message || err?.message || "Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -39,7 +58,7 @@ const ContactSection = () => {
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
           className="text-3xl sm:text-4xl font-extrabold text-white mb-8 tracking-tight text-left"
         >
-          Get In Touch With Us
+          {sectionTitle}
         </motion.h2>
 
         {/* Two-Column Grid */}
@@ -52,14 +71,23 @@ const ContactSection = () => {
             transition={{ type: "spring", stiffness: 80, damping: 15 }}
             className="lg:col-span-6 relative rounded-[32px] overflow-hidden min-h-[350px] lg:min-h-auto"
           >
-            <Image
-              src={contactImg}
-              alt="Technician repairing phone"
-              fill
-              className="object-cover"
-              priority
-            />
+            {typeof sectionImage === "string" ? (
+              <img
+                src={sectionImage}
+                alt="Technician repairing phone"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={sectionImage}
+                alt="Technician repairing phone"
+                fill
+                className="object-cover"
+                priority
+              />
+            )}
           </motion.div>
+
 
           {/* Right Column: Contact Form */}
           <motion.div 
@@ -190,12 +218,16 @@ const ContactSection = () => {
               {/* Submit Button */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full py-3 mt-2 bg-primary hover:bg-[#99EC21] text-black rounded-xl text-sm font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(128,207,22,0.25)] cursor-pointer"
+                disabled={isLoading}
+                whileHover={!isLoading ? { scale: 1.01 } : {}}
+                whileTap={!isLoading ? { scale: 0.99 } : {}}
+                className={`w-full py-3 mt-2 bg-primary hover:bg-[#99EC21] text-black rounded-xl text-sm font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(128,207,22,0.25)] ${
+                  isLoading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                }`}
               >
-                Send
+                {isLoading ? "Sending..." : "Send"}
               </motion.button>
+
             </form>
           </motion.div>
         </div>
