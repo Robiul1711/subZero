@@ -54,13 +54,13 @@ const CollectionDetails = () => {
   if (isError || !product) {
     return (
       <div className="w-full section-padding-x py-16 text-center">
-        <h2 className="text-2xl font-bold text-white mb-4">Product Not Found</h2>
-        <p className="text-secondary mb-6">The requested product details could not be retrieved.</p>
+        <h2 className="text-2xl font-bold text-white mb-4">Prodotto Non Trovato</h2>
+        <p className="text-secondary mb-6">I dettagli del prodotto richiesto non sono stati trovati.</p>
         <Link
           href="/collection"
           className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-black font-bold text-sm"
         >
-          <LuArrowLeft /> Back to Marketplace
+          <LuArrowLeft /> Torna al Marketplace
         </Link>
       </div>
     );
@@ -74,19 +74,19 @@ const CollectionDetails = () => {
   }
 
   const title = product.name;
-  const conditionTag = product.condition || "Refurbished";
-  const categoryName = product.category?.name || "Device";
+  const conditionTag = product.condition || "Ricondizionato";
+  const categoryName = product.category?.name || "Dispositivo";
   const shortDescription = product.short_description;
 
   const offerPrice = product.offer_price ? `$${product.offer_price}` : null;
   const oldPrice = product.old_price ? `$${product.old_price}` : null;
-  const savePercent = product.save_percentage ? `Save ${Math.round(product.save_percentage)}%` : null;
+  const savePercent = product.save_percentage ? `Risparmia ${Math.round(product.save_percentage)}%` : null;
 
   // Extract spec details from description object if exists
   const descObj = typeof product.description === "object" && product.description !== null ? product.description : {};
   const storageVal = descObj.Storage || product.storage || "N/A";
-  const batteryHealthVal = descObj["Battery Health"] || product.battery_health || "Good";
-  const warrantyVal = product.warranty || "1 Year Warranty";
+  const batteryHealthVal = descObj["Battery Health"] || product.battery_health || "Buona";
+  const warrantyVal = product.warranty || "Garanzia 1 Anno";
 
   // Tech Specs entries
   const techSpecs = Object.entries(descObj).map(([key, value]) => ({ key, value }));
@@ -101,9 +101,9 @@ const CollectionDetails = () => {
 
   // Value Proposition / Offerings checklist
   const offerings = product.offering || [
-    "1-Year Hardware Warranty",
-    "Original Accessories Included",
-    "Passed 90-Point Quality Inspection",
+    "Garanzia Hardware 1 Anno",
+    "Accessori Originali Inclusi",
+    "Superato Controllo Qualità a 90 Punti",
   ];
 
   const handleShare = async () => {
@@ -145,7 +145,7 @@ const CollectionDetails = () => {
             className="inline-flex items-center gap-2 text-sm text-secondary hover:text-primary transition-colors font-medium group"
           >
             <LuArrowLeft className="text-lg transition-transform group-hover:-translate-x-1" />
-            Back to Marketplace
+            Torna al Marketplace
           </Link>
           <div className="flex items-center gap-3">
             <button
@@ -154,7 +154,7 @@ const CollectionDetails = () => {
               title="Share device details"
             >
               <LuShare2 className="text-base text-primary" />
-              <span>{copied ? "Link Copied!" : "Share"}</span>
+              <span>{copied ? "Link Copiato!" : "Condividi"}</span>
             </button>
           </div>
         </div>
@@ -255,7 +255,7 @@ const CollectionDetails = () => {
                   {storageVal}
                 </span>
                 <span className="text-[10px] sm:text-xs text-secondary mt-0.5 font-medium">
-                  Storage
+                  Archiviazione
                 </span>
               </div>
 
@@ -266,7 +266,7 @@ const CollectionDetails = () => {
                   {batteryHealthVal}
                 </span>
                 <span className="text-[10px] sm:text-xs text-secondary mt-0.5 font-medium">
-                  Battery
+                  Batteria
                 </span>
               </div>
 
@@ -277,7 +277,7 @@ const CollectionDetails = () => {
                   {warrantyVal}
                 </span>
                 <span className="text-[10px] sm:text-xs text-secondary mt-0.5 font-medium">
-                  Warranty
+                  Garanzia
                 </span>
               </div>
             </div>
@@ -289,7 +289,7 @@ const CollectionDetails = () => {
                   {offerPrice}
                 </span>
               ) : (
-                <span className="text-xl font-bold text-white/60">Contact for Price</span>
+                <span className="text-xl font-bold text-white/60">Contattaci per il Prezzo</span>
               )}
               {oldPrice && (
                 <span className="text-base sm:text-lg text-secondary line-through">
@@ -307,7 +307,7 @@ const CollectionDetails = () => {
             <Link href="/contact" className="w-full">
               <button className="w-full bg-gradient-to-r from-[#80CF16] to-[#92e21b] text-black font-extrabold text-base sm:text-lg py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-[0_0_20px_rgba(128,207,22,0.25)] hover:shadow-[0_0_30px_rgba(128,207,22,0.45)] hover:scale-[1.01] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
                 <LuMessageSquare className="text-lg" />
-                Contact Us for Enquiry
+                Contattaci per Informazioni
               </button>
             </Link>
 
@@ -329,10 +329,10 @@ const CollectionDetails = () => {
           <div className="bg-[#141414] border border-white/5 rounded-2xl md:rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <h2 className="text-lg sm:text-xl font-bold text-white mb-6">
-                Technical Specifications
+                Specifiche Tecniche
               </h2>
               {techSpecs.length === 0 ? (
-                <p className="text-secondary text-sm">No specifications listed.</p>
+                <p className="text-secondary text-sm">Nessuna specifica disponibile.</p>
               ) : (
                 <div className="flex flex-col">
                   {techSpecs.map((spec, index) => (
@@ -355,10 +355,10 @@ const CollectionDetails = () => {
           <div className="bg-[#141414] border border-white/5 rounded-2xl md:rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <h2 className="text-lg sm:text-xl font-bold text-white mb-6">
-                Condition Report
+                Rapporto sulle Condizioni
               </h2>
               {conditionReportEntries.length === 0 ? (
-                <p className="text-secondary text-sm">No condition details provided.</p>
+                <p className="text-secondary text-sm">Nessun dettaglio sulle condizioni disponibile.</p>
               ) : (
                 <div className="flex flex-col gap-3.5">
                   {conditionReportEntries.map((item, index) => (
@@ -381,7 +381,7 @@ const CollectionDetails = () => {
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex gap-3 items-start mt-6">
                 <LuCircleCheck className="text-primary text-xl flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-secondary leading-relaxed">
-                  <span className="font-semibold text-white">Technician Notes:</span> {conditionNotes}
+                  <span className="font-semibold text-white">Note del Tecnico:</span> {conditionNotes}
                 </p>
               </div>
             )}

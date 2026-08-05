@@ -26,7 +26,7 @@ const Shop = () => {
     {
       id: 1,
       title: "iPhone 15 Pro",
-      badge: "Like New",
+      badge: "Come Nuovo",
       price: "$649",
       originalPrice: "$999",
       image: phone1,
@@ -34,7 +34,7 @@ const Shop = () => {
     {
       id: 2,
       title: "Galaxy S24 Ultra",
-      badge: "Excellent",
+      badge: "Eccellente",
       price: "$589",
       originalPrice: "$899",
       image: phone1,
@@ -42,7 +42,7 @@ const Shop = () => {
     {
       id: 3,
       title: "MacBook Air M3",
-      badge: "Refurbished",
+      badge: "Ricondizionato",
       price: "$849",
       originalPrice: "$1299",
       image: phone1,
@@ -50,7 +50,7 @@ const Shop = () => {
     {
       id: 4,
       title: 'iPad Pro 12.9"',
-      badge: "Like New",
+      badge: "Come Nuovo",
       price: "$479",
       originalPrice: "$799",
       image: phone1,
@@ -63,7 +63,7 @@ const Shop = () => {
         slug: item.slug,
         productId: item.product_id || item.id,
         title: item.name,
-        badge: item.condition || "Refurbished",
+        badge: item.condition || "Ricondizionato",
         price: item.offer_price ? `$${item.offer_price}` : "Contact Us",
         originalPrice: item.old_price ? `$${item.old_price}` : null,
         image: item.thumbnail || phone1,
@@ -194,7 +194,7 @@ const Shop = () => {
                 {/* Action Button */}
                 <Link href={`/collection/details?slug=${device.slug || device.id}`}>
                   <button className="w-full py-2.5 rounded-[12px] border border-white/10 bg-white/[0.02] text-sm font-semibold text-white transition-all duration-300 hover:border-primary hover:bg-primary hover:text-[#0D0D0D] cursor-pointer">
-                    Enquire Now
+                    Richiedi Info
                   </button>
                 </Link>
               </motion.div>
@@ -210,7 +210,7 @@ const Shop = () => {
           transition={{ delay: 0.2, type: "spring", stiffness: 80 }}
           className="flex justify-center mt-12 sm:mt-16"
         >
-          <GlowButton href={'/collection'}>View All</GlowButton>
+          <GlowButton href={'/collection'}>Vedi Tutti</GlowButton>
         </motion.div>
       </div>
     </section>

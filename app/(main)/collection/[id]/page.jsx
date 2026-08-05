@@ -14,9 +14,9 @@ export async function generateMetadata({ params }) {
       const p = json.data;
       return {
         title: `${p.name} | CREMA INFORMATICA`,
-        description: p.short_description || `Buy certified pre-owned ${p.name} with 1-year warranty and quality inspection.`,
+        description: p.short_description || `Acquista ${p.name} ricondizionato certificato con garanzia 1 anno e controllo qualità.`,
         openGraph: {
-          title: `${p.name} | Certified Pre-Owned`,
+          title: `${p.name} | Ricondizionato Certificato`,
           description: p.short_description,
           images: p.thumbnail ? [p.thumbnail] : [],
         },
@@ -27,8 +27,8 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: "Collection Item Details | CREMA INFORMATICA",
-    description: "View full specification, condition report, and warranty details for certified pre-owned devices.",
+    title: "Dettagli Articolo Collezione | CREMA INFORMATICA",
+    description: "Visualizza specifiche complete, rapporto sulle condizioni e dettagli della garanzia per dispositivi ricondizionati certificati.",
   };
 }
 

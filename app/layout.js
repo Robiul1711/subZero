@@ -28,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${manrope.variable} antialiased`}>
+    <html lang="it" className={`${manrope.variable} antialiased`}>
       <body>
             {/* Background spotlight overlay */}
       <div className="absolute inset-0 -z-20 pointer-events-none select-none">

@@ -16,29 +16,29 @@ import Link from "next/link";
 const SERVICES = [
   {
     id: "01",
-    title: "Business Website",
-    role: "Custom Corporate Solutions",
+    title: "Sito Web Aziendale",
+    role: "Soluzioni Aziendali Personalizzate",
     image: "/images/service-business.png",
     link: "/contact",
   },
   {
     id: "02",
-    title: "Static Website",
-    role: "Fast & Lightweight Landing Pages",
+    title: "Sito Web Statico",
+    role: "Landing Page Veloci e Leggere",
     image: "/images/service-static.png",
     link: "/contact",
   },
   {
     id: "03",
-    title: "Dynamic Website (CMS)",
-    role: "Scalable Content Management",
+    title: "Sito Web Dinamico (CMS)",
+    role: "Gestione Contenuti Scalabile",
     image: "/images/service-dynamic.png",
     link: "/contact",
   },
   {
     id: "04",
-    title: "E-commerce Website",
-    role: "Online Store & Payment Systems",
+    title: "Sito E-commerce",
+    role: "Negozio Online e Sistemi di Pagamento",
     image: "/images/service-ecommerce.png",
     link: "/contact",
   },
@@ -89,15 +89,15 @@ const CreativeServices = () => {
           <div className="md:col-span-7">
             <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-secondary uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              Service
+              Servizi
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mt-2">
-              Creative Service
+              Servizi Creativi
             </h2>
           </div>
           <div className="md:col-span-5 flex justify-start md:justify-end">
             <p className="text-xs sm:text-sm text-secondary/80 max-w-md leading-relaxed">
-              we transform bold visions into stunning digital products designs that captivate, experiences that convert, and solutions that scale.
+              Trasformiamo visioni audaci in prodotti digitali straordinari: design che catturano, esperienze che convertono e soluzioni che crescono con te.
             </p>
           </div>
         </div>
@@ -256,7 +256,7 @@ function ServiceRow({
                     href={data.link}
                     className="text-xs font-semibold text-white underline underline-offset-4"
                   >
-                    Explore Service
+                    Scopri il Servizio
                   </Link>
                 </div>
               </div>

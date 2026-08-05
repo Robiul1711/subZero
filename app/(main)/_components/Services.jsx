@@ -42,10 +42,10 @@ const Services = () => {
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
   const serviceData = combinedResponse?.data?.service || {};
 
-  const title = serviceData.title || "Expert iPhone & iPad Repair Services";
+  const title = serviceData.title || "Servizi Esperti di Riparazione iPhone e iPad";
   const descriptionText = serviceData.description
     ? serviceData.description.replace(/<[^>]+>/g, "")
-    : "Pick your device, choose the service, get a live price. No hidden fees.";
+    : "Scegli il tuo dispositivo, seleziona il servizio, ottieni un preventivo in tempo reale. Nessun costo nascosto.";
 
   const [step, setStep] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -107,7 +107,7 @@ const Services = () => {
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14"
         >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
-            Instant Quote
+            Preventivo Istantaneo
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
             {title}
@@ -149,7 +149,7 @@ const Services = () => {
                 ✓
               </div>
               <span className={step >= 2 ? "text-white" : "text-secondary"}>
-                {selectedModel ? selectedModel.name : "Model"}
+                {selectedModel ? selectedModel.name : "Modello"}
               </span>
             </div>
 
@@ -167,7 +167,7 @@ const Services = () => {
                 ✓
               </div>
               <span className={step >= 3 ? "text-white" : "text-secondary"}>
-                Services
+                Servizi
               </span>
             </div>
           </div>
@@ -180,7 +180,7 @@ const Services = () => {
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-6 py-2 rounded-xl bg-primary hover:bg-primary/90 text-black text-xs sm:text-sm font-bold shadow-[0_4px_15px_rgba(128,207,22,0.3)] cursor-pointer"
             >
-              ← Back
+              ← Indietro
             </motion.button>
           )}
         </motion.div>
@@ -213,7 +213,7 @@ const Services = () => {
                 </div>
               ) : devicesList.length === 0 ? (
                 <div className="text-center py-12 bg-[#121212]/30 rounded-2xl">
-                  <p className="text-secondary text-sm">No devices available.</p>
+                  <p className="text-secondary text-sm">Nessun dispositivo disponibile.</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -239,7 +239,7 @@ const Services = () => {
 
                         {/* Subtext */}
                         <p className="text-secondary text-xs sm:text-sm leading-relaxed max-w-[220px]">
-                          {cat.total_models} {cat.total_models === 1 ? "model" : "models"} available
+                           {cat.total_models} {cat.total_models === 1 ? "modello" : "modelli"} disponibili
                         </p>
                         {cat.note && (
                           <p className="text-xs text-primary/80 mt-1 font-medium">
@@ -267,12 +267,12 @@ const Services = () => {
               className="bg-[#121212]/80 border border-white/5 rounded-[28px] p-6 sm:p-10 max-w-6xl mx-auto shadow-2xl"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 text-left tracking-tight">
-                Select your {selectedCategory.name} model
+                Seleziona il modello di {selectedCategory.name}
               </h3>
               
               {!selectedCategory.models || selectedCategory.models.length === 0 ? (
                 <div className="text-center py-10 bg-[#161616] rounded-[20px]">
-                  <p className="text-secondary text-sm">No models found for this device.</p>
+                  <p className="text-secondary text-sm">Nessun modello trovato per questo dispositivo.</p>
                 </div>
               ) : (
                 <motion.div 
@@ -304,9 +304,9 @@ const Services = () => {
                       <h4 className="text-base sm:text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">
                         {model.name}
                       </h4>
-                      <p className="text-secondary text-xs font-medium">
-                        {model.total_services} {model.total_services === 1 ? "repair service" : "repair services"} available
-                      </p>
+                       <p className="text-secondary text-xs font-medium">
+                        {model.total_services} {model.total_services === 1 ? "servizio di riparazione" : "servizi di riparazione"} disponibili
+                       </p>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -327,10 +327,10 @@ const Services = () => {
             >
               <div className="mb-6 border-b border-white/5 pb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">
-                  Repairs for {selectedModel.name}
+                  Riparazioni per {selectedModel.name}
                 </h3>
                 <p className="text-secondary text-xs sm:text-sm">
-                  Choose a service to view estimated pricing and details.
+                  Scegli un servizio per visualizzare i prezzi stimati e i dettagli.
                 </p>
               </div>
 
@@ -348,7 +348,7 @@ const Services = () => {
                 </div>
               ) : repairItems.length === 0 ? (
                 <div className="text-center py-10 bg-[#161616] rounded-[20px]">
-                  <p className="text-secondary text-sm">No repair services available for this model yet.</p>
+                  <p className="text-secondary text-sm">Nessun servizio di riparazione disponibile per questo modello.</p>
                 </div>
               ) : (
                 <motion.div 

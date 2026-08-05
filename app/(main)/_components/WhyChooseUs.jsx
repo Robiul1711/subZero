@@ -22,10 +22,10 @@ const WhyChooseUs = () => {
             className="md:col-span-6 max-w-sm"
           >
             <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-              Spatial Planning
+              Pianificazione Spaziale
             </h3>
             <p className="text-xs sm:text-sm text-secondary/80 leading-relaxed font-normal">
-              We treat space with precision—nothing wasted, nothing missing. Every element is placed with purpose to guide users forward.
+              Trattiamo lo spazio con precisione - nulla di sprecato, nulla di mancante. Ogni elemento è posizionato con uno scopo per guidare gli utenti verso l'obiettivo.
             </p>
           </motion.div>
 
@@ -38,10 +38,10 @@ const WhyChooseUs = () => {
             className="md:col-span-6 md:ml-auto max-w-sm text-left"
           >
             <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-              Concept Development
+              Sviluppo del Concept
             </h3>
             <p className="text-xs sm:text-sm text-secondary/80 leading-relaxed font-normal">
-              We don&apos;t brainstorm—we dissect. Every idea is challenged until only clarity remains.
+              Non facciamo brainstorming - analizziamo. Ogni idea viene messa alla prova finché rimane solo la chiarezza.
             </p>
           </motion.div>
         </div>
@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.7 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none text-center"
           >
-            Why
+            Perché
           </motion.h2>
 
           {/* Center Globe Illustration & Semi-circular Arc Meter */}
@@ -167,7 +167,7 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.7 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none text-center"
           >
-            Choose us
+            Sceglierci
           </motion.h2>
         </div>
 
@@ -182,10 +182,10 @@ const WhyChooseUs = () => {
             className="md:col-span-6 max-w-sm"
           >
             <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-              Design Refinement
+              Perfezionamento del Design
             </h3>
             <p className="text-xs sm:text-sm text-secondary/80 leading-relaxed font-normal">
-              We refine until there&apos;s nothing left to kill because unforgettable products live in the details most people never notice but always feel.
+              Perfezionamo fino a quando non c&apos;è più nulla da eliminare, perché i prodotti indimenticabili vivono nei dettagli che la maggior parte delle persone non nota mai ma sente sempre.
             </p>
           </motion.div>
         </div>

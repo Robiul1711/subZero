@@ -9,10 +9,10 @@ const Stats = () => {
   const section2 = homepageCmsResponse?.data?.section_2 || {};
 
   const defaultStats = [
-    { value: '50K+', label: 'Devices Repaired' },
-    { value: '4.9★', label: 'Average Rating' },
-    { value: '120+', label: 'Certified Techs' },
-    { value: '1 Year', label: 'Repair Warranty' },
+    { value: '50K+', label: 'Dispositivi Riparati' },
+    { value: '4.9★', label: 'Valutazione Media' },
+    { value: '120+', label: 'Tecnici Certificati' },
+    { value: '1 Anno', label: 'Garanzia Riparazione' },
   ];
 
   const statItems = section2.stats && section2.stats.length > 0

@@ -11,10 +11,10 @@ import { LuHouse, LuWrench, LuSmartphone, LuGlobe, LuMail, LuArrowLeft } from "r
 
 export default function NotFound() {
   const quickLinks = [
-    { name: "Repair Phone", href: "/repair-phone", icon: LuSmartphone },
-    { name: "Our Services", href: "/service", icon: LuWrench },
-    { name: "Website Creation", href: "/website-creation", icon: LuGlobe },
-    { name: "Contact Support", href: "/contact", icon: LuMail },
+    { name: "Riparazione Telefono", href: "/repair-phone", icon: LuSmartphone },
+    { name: "I Nostri Servizi", href: "/service", icon: LuWrench },
+    { name: "Creazione Siti Web", href: "/website-creation", icon: LuGlobe },
+    { name: "Supporto Clienti", href: "/contact", icon: LuMail },
   ];
 
   return (
@@ -52,7 +52,7 @@ export default function NotFound() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <span className="text-xs font-bold tracking-wider text-primary uppercase">
-                Error 404 — Page Missing
+                Errore 404 — Pagina Non Trovata
               </span>
             </motion.div>
 
@@ -78,7 +78,7 @@ export default function NotFound() {
               transition={{ delay: 0.4 }}
               className="text-xl sm:text-3xl font-extrabold text-white tracking-tight mt-2"
             >
-              Lost in Cyberspace?
+              Perso nel Cyberspazio?
             </motion.h2>
 
             <motion.p
@@ -87,8 +87,8 @@ export default function NotFound() {
               transition={{ delay: 0.5 }}
               className="text-secondary text-sm sm:text-base max-w-md mx-auto mt-3 leading-relaxed"
             >
-              The page you are looking for doesn’t exist or has been relocated.
-              Let’s get you back on track!
+              La pagina che stai cercando non esiste o è stata spostata.
+              Torniamo sulla strada giusta!
             </motion.p>
 
             {/* Action Buttons */}
@@ -101,7 +101,7 @@ export default function NotFound() {
               <GlowButton href="/">
                 <span className="flex items-center gap-2">
                   <LuHouse className="text-lg" />
-                  Back to Home
+                  Torna alla Home
                 </span>
               </GlowButton>
 
@@ -110,7 +110,7 @@ export default function NotFound() {
                 className="rounded-[12px] border border-white/10 bg-white/[0.04] px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] backdrop-blur-md flex items-center gap-2"
               >
                 <LuWrench className="text-primary text-lg" />
-                View Services
+                Vedi i Servizi
               </Link>
             </motion.div>
           </motion.div>
@@ -123,7 +123,7 @@ export default function NotFound() {
             className="mt-10 w-full"
           >
             <p className="text-xs font-semibold uppercase tracking-wider text-secondary/60 mb-4">
-              Or check out these popular destinations:
+              Oppure visita queste pagine popolari:
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {quickLinks.map((link) => {

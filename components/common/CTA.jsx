@@ -9,8 +9,8 @@ const CTA = () => {
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
   const bannerData = combinedResponse?.data?.banner || {};
 
-  const title = bannerData.title || "Device broken? We fix it fast.";
-  const subText = bannerData.sub_text || "Walk in or book online — most repairs done in under 2 hours.";
+  const title = bannerData.title || "Dispositivo rotto? Lo ripariamo in fretta.";
+  const subText = bannerData.sub_text || "Vieni da noi o prenota online — la maggior parte delle riparazioni in meno di 2 ore.";
 
   return (
     <section className="w-full pb-12 sm:pb-16 relative overflow-hidden">
@@ -39,7 +39,7 @@ const CTA = () => {
               href="/service"
               className="inline-flex items-center justify-center bg-[#0D0D0D] text-white px-6 sm:px-8 py-3 rounded-[12px] text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#1C1C1C] hover:scale-105 active:scale-[0.98] shadow-lg cursor-pointer"
             >
-              View Service
+              Vedi i Servizi
             </Link>
           </div>
         </motion.div>

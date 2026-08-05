@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node api.js && next dev",
+    "build": "node api.js && next build",
+    "start": "node api.js && next start",
     "lint": "eslint"
   },
   "dependencies": {
@@ -23,8 +23,7 @@
     "swiper": "^14.0.5",
     "tailwind-merge": "^3.6.0",
     "@tailwindcss/postcss": "^4",
-     "tailwindcss": "^4"
-     
+    "tailwindcss": "^4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

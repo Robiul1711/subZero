@@ -19,7 +19,7 @@ const WhyWebsite = () => {
             transition={{ duration: 0.6 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight"
           >
-            Why Your Business Needs A Website
+            Perché la Tua Azienda Ha Bisogno di un Sito Web
           </motion.h2>
         </div>
 
@@ -142,11 +142,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              24/7 Online Presence
+              Presenza Online 24/7
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              Your business is always open, allowing customers to discover your
-              products and services anytime.
+              La tua azienda è sempre aperta, permettendo ai clienti di scoprire i tuoi prodotti e servizi in qualsiasi momento.
             </p>
           </motion.div>
 
@@ -160,11 +159,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Build Trust & Credibility
+              Costruisci Fiducia e Credibilità
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              A professional website increases customer confidence and
-              strengthens your brand image.
+              Un sito web professionale aumenta la fiducia dei clienti e rafforza l'immagine del tuo brand.
             </p>
           </motion.div>
 
@@ -178,11 +176,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Reach More Customers
+              Raggiungi Più Clienti
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              Expand your audience beyond your local area and attract new
-              customers online.
+              Espandi il tuo pubblico oltre la tua area locale e attira nuovi clienti online.
             </p>
           </motion.div>
 
@@ -196,11 +193,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Showcase Your Services
+              Mostra i Tuoi Servizi
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              Present your products, services, portfolio, and achievements in
-              one professional place.
+              Presenta i tuoi prodotti, servizi, portfolio e risultati in un unico posto professionale.
             </p>
           </motion.div>
 
@@ -214,11 +210,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Generate More Leads
+              Genera Più Contatti
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              Convert visitors into potential customers with clear
-              calls-to-action and contact options.
+              Converti i visitatori in potenziali clienti con call-to-action chiare e opzioni di contatto.
             </p>
           </motion.div>
 
@@ -232,11 +227,10 @@ const WhyWebsite = () => {
           >
             <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Grow Your Business
+              Fai Crescere il Tuo Business
             </h3>
             <p className="text-xs text-secondary/90 mt-1 leading-relaxed">
-              A high-performing website helps increase visibility, engagement,
-              and long-term business growth.
+              Un sito web ad alte prestazioni aumenta la visibilità, il coinvolgimento e la crescita aziendale a lungo termine.
             </p>
           </motion.div>
         </div>
@@ -247,11 +241,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              24/7 Online Presence
+              Presenza Online 24/7
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              Your business is always open, allowing customers to discover your
-              products and services anytime.
+              La tua azienda è sempre aperta, permettendo ai clienti di scoprire i tuoi prodotti e servizi in qualsiasi momento.
             </p>
           </div>
 
@@ -259,11 +252,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Reach More Customers
+              Raggiungi Più Clienti
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              Expand your audience beyond your local area and attract new
-              customers online.
+              Espandi il tuo pubblico oltre la tua area locale e attira nuovi clienti online.
             </p>
           </div>
 
@@ -271,11 +263,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Build Trust & Credibility
+              Costruisci Fiducia e Credibilità
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              A professional website increases customer confidence and
-              strengthens your brand image.
+              Un sito web professionale aumenta la fiducia dei clienti e rafforza l'immagine del tuo brand.
             </p>
           </div>
 
@@ -283,11 +274,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Showcase Your Services
+              Mostra i Tuoi Servizi
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              Present your products, services, portfolio, and achievements in
-              one professional place.
+              Presenta i tuoi prodotti, servizi, portfolio e risultati in un unico posto professionale.
             </p>
           </div>
 
@@ -295,11 +285,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Generate More Leads
+              Genera Più Contatti
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              Convert visitors into potential customers with clear
-              calls-to-action and contact options.
+              Converti i visitatori in potenziali clienti con call-to-action chiare e opzioni di contatto.
             </p>
           </div>
 
@@ -307,11 +296,10 @@ const WhyWebsite = () => {
             <span className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20" />
             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-              Grow Your Business
+              Fai Crescere il Tuo Business
             </h3>
             <p className="text-xs sm:text-sm text-secondary mt-1.5 leading-relaxed">
-              A high-performing website helps increase visibility, engagement,
-              and long-term business growth.
+              Un sito web ad alte prestazioni aumenta la visibilità, il coinvolgimento e la crescita aziendale a lungo termine.
             </p>
           </div>
         </div>

@@ -27,11 +27,11 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Service", href: "/service" },
-    { name: "Repair Phone", href: "/repair-phone" },
-    { name: "Website Creation", href: "/website-creation" },
-    { name: "Our Collection", href: "/collection" },
-    { name: "Contact us", href: "/contact" },
+    { name: "Servizi", href: "/service" },
+    { name: "Riparazione Telefono", href: "/repair-phone" },
+    { name: "Creazione Siti Web", href: "/website-creation" },
+    { name: "La Nostra Collezione", href: "/collection" },
+    { name: "Contattaci", href: "/contact" },
   ];
 
   return (
@@ -75,7 +75,7 @@ const Navbar = () => {
 
           {/* Action Button (GlowButton) - Desktop */}
           <div className="hidden lg:block">
-            <GlowButton href="/contact">Contact us</GlowButton>
+            <GlowButton href="/contact">Contattaci</GlowButton>
           </div>
 
           {/* Mobile Menu Button */}
@@ -154,7 +154,7 @@ const Navbar = () => {
             className="w-full text-center"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Contact us
+            Contattaci
           </GlowButton>
         </div>
       </div>

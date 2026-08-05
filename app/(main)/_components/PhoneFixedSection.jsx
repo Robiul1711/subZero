@@ -38,8 +38,8 @@ const PhoneFixedSection = () => {
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
   const repairData = combinedResponse?.data?.repair || {};
 
-  const text1 = repairData.text_1 || "Get Fixed in 30 Min";
-  const text2 = repairData.text_2 || "7-days Money-back Guarantee";
+  const text1 = repairData.text_1 || "Riparato in 30 Minuti";
+  const text2 = repairData.text_2 || "Garanzia Soddisfatti o Rimborsati 7 Giorni";
   const cmsImage = repairData.image;
 
   return (
@@ -200,7 +200,7 @@ const PhoneFixedSection = () => {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-2.5 rounded-full bg-primary text-black font-semibold text-sm shadow-[0_0_15px_rgba(128,207,22,0.4)] cursor-pointer select-none transition-all duration-300"
           >
-            Contact Us
+            Contattaci
           </motion.button>
         </div>
       </div>

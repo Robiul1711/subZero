@@ -18,7 +18,7 @@ const Testimonials = () => {
   });
 
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
-  const testimonialTitle = combinedResponse?.data?.testimonial?.title || "What Our Customers Say";
+  const testimonialTitle = combinedResponse?.data?.testimonial?.title || "Cosa Dicono i Nostri Clienti";
 
   const apiTestimonials = apiResponse?.data || [];
 
@@ -51,7 +51,7 @@ const Testimonials = () => {
           className="text-center max-w-3xl mx-auto"
         >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
-            Testimonials
+            Testimonianze
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
             {testimonialTitle}

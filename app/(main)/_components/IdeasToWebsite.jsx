@@ -131,7 +131,7 @@ const IdeasToWebsite = () => {
           transition={{ duration: 0.7 }}
           className="text-3xl sm:text-4xl md:text-5xl  font-bold tracking-tight text-white leading-[1.15] sm:leading-[1.15]"
         >
-          Turning Ideas into Clean, fast, and user friendly Website.
+          Trasformiamo le Idee in Siti Web Veloci, Puliti e Facili da Usare.
         </motion.h2>
 
         <motion.div
@@ -145,7 +145,7 @@ const IdeasToWebsite = () => {
             href="/contact"
             className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-linear-to-r from-[#80CF16] to-[#96ed1f] text-black font-extrabold text-sm sm:text-base tracking-wide shadow-[0_0_25px_rgba(128,207,22,0.4)] hover:shadow-[0_0_35px_rgba(128,207,22,0.7)] hover:scale-105 transition-all duration-300"
           >
-            Contact us
+            Contattaci
           </Link>
         </motion.div>
       </div>

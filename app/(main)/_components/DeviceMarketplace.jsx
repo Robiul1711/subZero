@@ -27,7 +27,7 @@ const DeviceMarketplace = () => {
   const headerSubTitle = marketplaceCMS.sub_title || "Device Marketplace";
   const headerDescription = marketplaceCMS.short_description
     ? marketplaceCMS.short_description.replace(/<[^>]+>/g, "")
-    : "Grade-A certified pre-owned smartphones, laptops, tablets, and more. Every device inspected, graded, and warranted.";
+    : "Smartphone, laptop, tablet e altro di qualità certificata. Ogni dispositivo ispezionato, classificato e garantito.";
 
   const getConditionColor = (cond) => {
     if (!cond) return "bg-white/10 border-white/20 text-white";
@@ -86,7 +86,7 @@ const DeviceMarketplace = () => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            placeholder="Search by device name or brand..."
+            placeholder="Cerca per nome o marca del dispositivo..."
             className="w-full bg-[#121212]/80 border border-white/10 rounded-full py-2 sm:py-4 pl-10 md:pl-12 pr-6 text-sm text-white placeholder-white/30 focus:outline-none focus:border-primary transition-all duration-300 shadow-custom"
           />
         </motion.div>
@@ -112,9 +112,9 @@ const DeviceMarketplace = () => {
         ) : products.length === 0 ? (
           /* Empty Search State */
           <div className="text-center py-16 bg-[#121212]/30 border border-white/5 rounded-3xl max-w-2xl mx-auto">
-            <p className="text-white text-lg font-bold">No products found</p>
+            <p className="text-white text-lg font-bold">Nessun prodotto trovato</p>
             <p className="text-secondary text-sm mt-2">
-              We couldn&apos;t find any devices matching &quot;{searchQuery}&quot;. Try searching for another term.
+              Non abbiamo trovato dispositivi corrispondenti a &quot;{searchQuery}&quot;. Prova un altro termine.
             </p>
           </div>
         ) : (
@@ -179,7 +179,7 @@ const DeviceMarketplace = () => {
                       {/* Popular Badge */}
                       {item.is_popular && (
                         <span className="absolute top-3 left-3 bg-primary text-black font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1">
-                          <LuSparkles className="text-xs" /> Popular
+                          <LuSparkles className="text-xs" /> Popolare
                         </span>
                       )}
 
@@ -213,7 +213,7 @@ const DeviceMarketplace = () => {
                         </span>
                       ) : (
                         <span className="text-white/60 font-semibold text-sm">
-                          Contact for Price
+                          Contatta per il Prezzo
                         </span>
                       )}
                       {oldPrice && (
@@ -227,7 +227,7 @@ const DeviceMarketplace = () => {
                   {/* Enquiry Button */}
                   <Link href={`/collection/details?slug=${item.slug || item.id}`} className="w-full">
                     <button className="w-full py-2.5 mt-5 rounded-xl border border-white/10 hover:border-primary bg-white/[0.02] text-white hover:text-black hover:bg-primary text-xs font-semibold tracking-wide transition-all duration-300 text-center cursor-pointer shadow-sm">
-                      View Details & Enquire
+                      Vedi Dettagli e Richiedi Info
                     </button>
                   </Link>
 
@@ -285,7 +285,7 @@ const DeviceMarketplace = () => {
               }}
               className="px-4 py-2 rounded-xl border border-white/10 text-xs font-semibold text-white hover:border-primary disabled:opacity-30 disabled:pointer-events-none transition-all duration-300 cursor-pointer"
             >
-              Next
+              Avanti
             </button>
           </div>
         )}

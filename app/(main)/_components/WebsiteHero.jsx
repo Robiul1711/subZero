@@ -17,8 +17,8 @@ const WebsiteHero = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-5xl md:text-6xl  font-bold tracking-tight text-white leading-tight sm:leading-[1.1]"
           >
-            Custom Websites That Grow{" "}
-            <span className="block text-primary mt-1 sm:mt-2">Your Business</span>
+            Siti Web Personalizzati Che Fanno Crescere{" "}
+            <span className="block text-primary mt-1 sm:mt-2">Il Tuo Business</span>
           </motion.h1>
 
           <motion.p
@@ -27,7 +27,7 @@ const WebsiteHero = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-secondary max-w-2xl mx-auto leading-relaxed"
           >
-            We create modern, responsive websites tailored to your business, helping you attract customers and grow online
+            Creiamo siti web moderni e responsive su misura per la tua azienda, aiutandoti ad attrarre clienti e crescere online
           </motion.p>
 
           <motion.div
@@ -38,7 +38,7 @@ const WebsiteHero = () => {
           >
             <Link href="/contact">
               <button className="bg-linear-to-r from-primary to-[#92e21b] text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-[0_0_20px_rgba(128,207,22,0.3)] hover:shadow-[0_0_30px_rgba(128,207,22,0.5)] hover:scale-105 transition-all duration-300 cursor-pointer">
-                Contact us
+                Contattaci
               </button>
             </Link>
           </motion.div>
@@ -80,7 +80,7 @@ const WebsiteHero = () => {
           <div className="md:col-span-3">
             <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider text-secondary uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              Who We Are
+              Chi Siamo
             </div>
           </div>
 
@@ -88,10 +88,10 @@ const WebsiteHero = () => {
           <div className="md:col-span-9">
             <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug sm:leading-relaxed tracking-tight">
               <span className="text-white font-bold">
-                We Create Modern, Responsive, And Scalable Websites Tailored To Your Business.
+                Creiamo Siti Web Moderni, Responsive e Scalabili Su Misura Per il Tuo Business.
               </span>{" "}
               <span className="text-secondary/80 font-normal">
-                Every Project Is Designed To Enhance Your Online Presence, Improve User Experience, And Drive Measurable Results.
+                Ogni Progetto È Progettato Per Migliorare la Tua Presenza Online, Ottimizzare l'Esperienza Utente e Generare Risultati Misurabili.
               </span>
             </h2>
           </div>

@@ -22,40 +22,40 @@ const Process = () => {
   const { data: homepageCmsResponse } = useGetHomepageCmsQuery();
   const section3 = homepageCmsResponse?.data?.section_3 || {};
 
-  const title = section3.title || "Easy Repair In 4 Simple Steps";
-  const shortDescription = section3.short_description || "We’ve streamlined the repair experience so you can get your device back fast with zero hassle.";
+  const title = section3.title || "Riparazione Facile in 4 Semplici Passi";
+  const shortDescription = section3.short_description || "Abbiamo semplificato il processo di riparazione per farti riavere il tuo dispositivo rapidamente e senza problemi.";
 
   const categories = [
-    { id: "phone", name: "Phone Repair", icon: LuSmartphone },
-    { id: "laptop", name: "Laptop Repair", icon: LuLaptop },
-    { id: "tablet", name: "Tablet Repair", icon: LuTablet },
-    { id: "watch", name: "Watch Repair", icon: LuWatch },
+    { id: "phone", name: "Riparazione Telefono", icon: LuSmartphone },
+    { id: "laptop", name: "Riparazione Laptop", icon: LuLaptop },
+    { id: "tablet", name: "Riparazione Tablet", icon: LuTablet },
+    { id: "watch", name: "Riparazione Orologio", icon: LuWatch },
   ];
 
   const defaultSteps = [
     {
       icon: LuPhone,
-      title: "Book Appointment",
+      title: "Prenota un Appuntamento",
       description:
-        "Schedule a repair visit online or walk in to any of our service centers at your convenience.",
+        "Prenota una visita di riparazione online o vieni direttamente in uno dei nostri centri assistenza quando vuoi.",
     },
     {
       icon: LuWrench,
-      title: "Device Diagnosis",
+      title: "Diagnosi del Dispositivo",
       description:
-        "Our certified technicians perform a thorough diagnosis to identify all issues with your device.",
+        "I nostri tecnici certificati eseguono una diagnosi approfondita per identificare tutti i problemi con il tuo dispositivo.",
     },
     {
       icon: LuShield,
-      title: "Expert Repair",
+      title: "Riparazione Esperta",
       description:
-        "We use only genuine parts and follow manufacturer standards to restore your device perfectly.",
+        "Utilizziamo solo ricambi originali e seguiamo gli standard del produttore per ripristinare perfettamente il tuo dispositivo.",
     },
     {
       icon: LuBadgeCheck,
-      title: "Quality Check",
+      title: "Controllo Qualità",
       description:
-        "Schedule a repair visit online or walk in to any of our service centers at your convenience.",
+        "Ogni dispositivo viene testato accuratamente prima della consegna per garantire il massimo standard qualitativo.",
     },
   ];
 
@@ -126,7 +126,7 @@ const Process = () => {
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-primary uppercase">
-            Our Process
+            Il Nostro Processo
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
             {title}

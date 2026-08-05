@@ -14,19 +14,19 @@ const Footer = () => {
   const footerData = footerResponse?.data || {};
 
   const services = [
-    { name: "Screen Replacement", href: "/repair-phone" },
-    { name: "Battery Repair", href: "/repair-phone" },
-    { name: "Water Damage", href: "/repair-phone" },
-    { name: "Website Creation", href: "/website-creation" },
+    { name: "Sostituzione Schermo", href: "/repair-phone" },
+    { name: "Riparazione Batteria", href: "/repair-phone" },
+    { name: "Danni da Acqua", href: "/repair-phone" },
+    { name: "Creazione Siti Web", href: "/website-creation" },
   ];
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "Service", href: "/service" },
-    { name: "Repair Phone", href: "/repair-phone" },
-    { name: "Website Creation", href: "/website-creation" },
-    { name: "Our Collection", href: "/collection" },
-    { name: "Contact us", href: "/contact" },
+    { name: "Servizi", href: "/service" },
+    { name: "Riparazione Telefono", href: "/repair-phone" },
+    { name: "Creazione Siti Web", href: "/website-creation" },
+    { name: "La Nostra Collezione", href: "/collection" },
+    { name: "Contattaci", href: "/contact" },
   ];
 
   const socialLinks = [
@@ -80,7 +80,7 @@ const Footer = () => {
   // Helper to format short description if HTML tags are present
   const formatDescription = (desc) => {
     if (!desc)
-      return "Your trusted gadget repair partner. Certified technicians, genuine parts, and a warranty you can count on.";
+      return "Il tuo partner di fiducia per la riparazione di dispositivi. Tecnici certificati, ricambi originali e garanzia su cui puoi contare.";
     return desc.replace(/<[^>]+>/g, "");
   };
 
@@ -135,7 +135,7 @@ const Footer = () => {
           {/* Column 2: Services */}
           <div className="lg:col-span-3 flex flex-col">
             <h3 className="text-white font-bold text-sm sm:text-base tracking-wide mb-3">
-              Services
+              Servizi
             </h3>
             <ul className="flex flex-col gap-2 font-medium">
               {services.map((link, idx) => (
@@ -154,7 +154,7 @@ const Footer = () => {
           {/* Column 3: Quick Links */}
           <div className="lg:col-span-3 flex flex-col">
             <h3 className="text-white font-bold text-base tracking-wide mb-3">
-              Quick Links
+              Link Rapidi
             </h3>
             <ul className="flex flex-col gap-2">
               {quickLinks.map((link, idx) => (
@@ -173,7 +173,7 @@ const Footer = () => {
           {/* Column 4: Contact */}
           <div className="lg:col-span-3 flex flex-col">
             <h3 className="text-white font-bold text-base tracking-wide mb-3">
-              Contact
+              Contatto
             </h3>
             <ul className="flex flex-col gap-2.5">
               {contactInfo.map((info, idx) => {
@@ -212,32 +212,32 @@ const Footer = () => {
         <div className="border-t border-white/5 mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-secondary text-center sm:text-left">
             {footerData.rights_reserved ||
-              `© ${currentYear} CREMA INFORMATICA. All rights reserved.`}
+              `© ${currentYear} CREMA INFORMATICA. Tutti i diritti riservati.`}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1.5">
             <Link
               href="/privacy-policy"
               className="text-xs text-secondary hover:text-primary transition-colors duration-300"
             >
-              Privacy Policy
+              Informativa sulla Privacy
             </Link>
             <Link
               href="/terms-of-service"
               className="text-xs text-secondary hover:text-primary transition-colors duration-300"
             >
-              Terms of Service
+              Termini di Servizio
             </Link>
             <Link
               href="/cookie-policy"
               className="text-xs text-secondary hover:text-primary transition-colors duration-300"
             >
-              Cookie Policy
+              Informativa sui Cookie
             </Link>
             <Link
               href="/warranty-policy"
               className="text-xs text-secondary hover:text-primary transition-colors duration-300"
             >
-              Warranty Policy
+              Garanzia
             </Link>
           </div>
         </div>

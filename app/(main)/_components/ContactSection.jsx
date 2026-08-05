@@ -14,7 +14,7 @@ const ContactSection = () => {
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
   const contactUsData = combinedResponse?.data?.contact_us || {};
 
-  const sectionTitle = contactUsData.title || "Get In Touch With Us";
+  const sectionTitle = contactUsData.title || "Mettiti in Contatto Con Noi";
   const sectionImage = contactUsData.image || contactImg;
 
   const {
@@ -40,10 +40,10 @@ const ContactSection = () => {
       formData.append("message", data.message);
 
       const res = await sendContact(formData).unwrap();
-      toast.success(res?.message || "Thank you! We've received your request and will contact you shortly.");
+      toast.success(res?.message || "Grazie! Abbiamo ricevuto la tua richiesta e ti contatteremo a breve.");
       reset();
     } catch (err) {
-      toast.error(err?.data?.message || err?.message || "Failed to send message. Please try again.");
+      toast.error(err?.data?.message || err?.message || "Invio del messaggio fallito. Riprova.");
     }
   };
 
@@ -101,7 +101,7 @@ const ContactSection = () => {
               {/* Name field */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm font-semibold text-secondary">
-                  Full Name
+                  Nome Completo
                 </label>
                 <div className="relative w-full">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-white/30">
@@ -110,13 +110,13 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="name"
-                    placeholder="enter your name"
+                    placeholder="inserisci il tuo nome"
                     className={`w-full bg-[#0a0a0a]/60 border rounded-xl py-3.5 pl-12 pr-4 text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${
                       errors.name ? "border-red-500/80 focus:border-red-500" : "border-white/10 focus:border-primary"
                     }`}
                     {...register("name", {
-                      required: "Full name is required",
-                      minLength: { value: 2, message: "Name must be at least 2 characters" },
+                      required: "Il nome completo è obbligatorio",
+                      minLength: { value: 2, message: "Il nome deve avere almeno 2 caratteri" },
                     })}
                   />
                 </div>
@@ -144,10 +144,10 @@ const ContactSection = () => {
                       errors.email ? "border-red-500/80 focus:border-red-500" : "border-white/10 focus:border-primary"
                     }`}
                     {...register("email", {
-                      required: "Email address is required",
+                      required: "L'indirizzo email è obbligatorio",
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Invalid email address",
+                        message: "Indirizzo email non valido",
                       },
                     })}
                   />
@@ -162,7 +162,7 @@ const ContactSection = () => {
               {/* Number field */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="number" className="text-sm font-semibold text-secondary">
-                  Number
+                  Numero di Telefono
                 </label>
                 <div className="relative w-full">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-white/30">
@@ -171,15 +171,15 @@ const ContactSection = () => {
                   <input
                     type="tel"
                     id="number"
-                    placeholder="enter your phone number"
+                    placeholder="inserisci il tuo numero di telefono"
                     className={`w-full bg-[#0a0a0a]/60 border rounded-xl py-3.5 pl-12 pr-4 text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${
                       errors.number ? "border-red-500/80 focus:border-red-500" : "border-white/10 focus:border-primary"
                     }`}
                     {...register("number", {
-                      required: "Phone number is required",
+                      required: "Il numero di telefono è obbligatorio",
                       pattern: {
                         value: /^[0-9+\-\s()]{7,20}$/,
-                        message: "Invalid phone number format",
+                        message: "Formato numero di telefono non valido",
                       },
                     })}
                   />
@@ -194,18 +194,18 @@ const ContactSection = () => {
               {/* Message field */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className="text-sm font-semibold text-secondary">
-                  Message
+                  Messaggio
                 </label>
                 <textarea
                   id="message"
                   rows={4}
-                  placeholder="enter your messsge"
+                  placeholder="inserisci il tuo messaggio"
                   className={`w-full bg-[#0a0a0a]/60 border rounded-xl py-3.5 px-4 text-sm text-white placeholder-white/20 focus:outline-none transition-colors resize-none ${
                     errors.message ? "border-red-500/80 focus:border-red-500" : "border-white/10 focus:border-primary"
                   }`}
                   {...register("message", {
-                    required: "Message content is required",
-                    minLength: { value: 10, message: "Message must be at least 10 characters" },
+                    required: "Il contenuto del messaggio è obbligatorio",
+                    minLength: { value: 10, message: "Il messaggio deve contenere almeno 10 caratteri" },
                   })}
                 />
                 {errors.message && (
@@ -225,7 +225,7 @@ const ContactSection = () => {
                   isLoading ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
-                {isLoading ? "Sending..." : "Send"}
+                {isLoading ? "Invio in corso..." : "Invia"}
               </motion.button>
 
             </form>
