@@ -10,7 +10,7 @@ import { useGetCombinedSectionsQuery, useGetProductConditionsQuery } from "@/red
 
 const Shop = () => {
   const { data: combinedResponse } = useGetCombinedSectionsQuery();
-  const { data: response, isLoading } = useGetProductConditionsQuery({ per_page: 4 });
+  const { data: response, isLoading } = useGetProductConditionsQuery({ per_page: 4, is_popular: 1 });
 
   const marketplace = combinedResponse?.data?.marketplace || {};
 
